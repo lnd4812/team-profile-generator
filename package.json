@@ -1,0 +1,22 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "npm",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lnd4812/team-profile-generator.git"
+  },
+  "keywords": [
+    "team"
+  ],
+  "author": "lnd4812",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/lnd4812/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/lnd4812/team-profile-generator#readme"
+}
