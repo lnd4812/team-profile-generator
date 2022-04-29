@@ -1,6 +1,6 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-const generateTeamTemplate = require('./utils/teamtemplate.js');  // template for team roster
+const generateTeamTemplate = require('./src/team-template.js');  // template for team roster
 
 // use inquirer module to prompt manager to start compiling team roster
 const promptManager = () => {
@@ -22,7 +22,7 @@ const promptManager = () => {
         },
         {   
             type: 'input',
-            name: 'employeeId',
+            name: 'id',
             message: 'Please enter your ID number (required)',
             validate:   idEntered => {
                 if (idEntered) {
@@ -46,9 +46,7 @@ const promptManager = () => {
                 }
             }    
         },
-
-// use if / else for 4th question
-        // if manager
+        // because Manager is answering these questions, complete manager card
         {   
             type: 'input',
             name:  'officeNumber',
@@ -62,47 +60,53 @@ const promptManager = () => {
                 }
             }    
         },
-
-        // else if engineer 
-
-        {   
-            type: 'input',
-            name:  'github',
-            message: 'Please enter your Github name (required)',
-            validate:   githubAdded => {
-                if (githubAdded) {
-                    return true;
-                } else {
-                    console.log('Please enter your GitHub name');
-                    return false;
-                }
-            }    
-        },
-        // else if intern 
-
-        {   
-            type: 'input',
-            name:  'school',
-            message: 'Please enter school attended (required)',
-            validate:   schoolAdded => {
-                if (schoolAdded) {
-                    return true;
-                } else {
-                    console.log('Please enter the name of your school');
-                    return false;
-                }
-            }    
-        },
-
-// answering the last question should trigger a function that brings up a menu with option to add engineer(s) or intern(s)
-// clicking enter should bring menu up again and continue to do so for each entry until finished.
-// include a Quit button  if Mgr elects to continue, click to add, otherwise click quit to quit
-// the Quit action will then bring up the writeFile function
-// use module 10 score grid as template for team roster
-
-      
     ]);
 };
+
+   
+//     const promptTeam = teamData => {
+    // console.log(`Please choose one of the following options from the menu - add Engineer, add Intern, Finish`)
+
+//  switch()
+// case: 'Engineer', same 1st 3 questions from above plus:         {   
+//             type: 'input',
+//             name:  'github',
+//             message: 'Please enter your Github name (required)',
+//             validate:   githubAdded => {
+//                 if (githubAdded) {
+//                     return true;
+//                 } else {
+//                     console.log('Please enter your GitHub name');
+//                     return false;
+//                 }
+//             }    
+//         },
+// case: 'Intern', again same 3 questions from above plus:
+
+//         {   
+//             type: 'input',
+//             name:  'school',
+//             message: 'Please enter school attended (required)',
+//             validate:   schoolAdded => {
+//                 if (schoolAdded) {
+//                     return true;
+//                 } else {
+//                     console.log('Please enter the name of your school');
+//                     return false;
+//                 }
+//             }    
+//         },
+// case: 'Finish' - exit and create team portfolio page
+
+// // answering the last question should trigger a function that brings up a menu with option to add engineer(s) or intern(s)
+// // clicking enter should bring menu up again and continue to do so for each entry until finished.
+// // include a Quit button  if Mgr elects to continue, click to add, otherwise click quit to quit
+// // the Quit action will then bring up the writeFile function
+// // use module 10 score grid as template for team roster
+
+      
+//     ]);
+// };
 
 
 // function to initalize app and create array of answers required to population the template and then generate the README
@@ -113,7 +117,7 @@ function init() {
         const generatedTeamRoster = generateTeamRoster(answers);
     
         // generate readme
-        fs.writeFileSync('./src/teamRoster.html', generatedTeamRoster, err => {
+        fs.writeFileSync('./dist/teamRoster.html', generatedTeamRoster, err => {
             if (err) throw err;
         });
     });

@@ -1,0 +1,68 @@
+
+:root {
+    --primary: #ffffff;
+    --secondary: rgba(189, 2, 2, 0.818);
+    --tertiary: rgba(9, 60, 168, 0.897);
+    --light: rgb(0, 179, 255);
+    --dark: #000;
+}
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: var(--primary);
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+  
+  main {
+    margin: 20px auto;
+    width: 94%;
+  }
+  
+  header {
+    padding: 2.5px;
+    margin: 20px;
+    background-color: var(--secondary);
+  }
+  
+  header h1 {
+    font-size: 3rem;
+    color: var(--primary);
+    text-align: center;
+  }
+
+.team-board {
+    background: var(--primary);
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+ /* CARDS */
+.card {
+    margin: 0 0 20px 0;
+    border: 3px solid var(--dark);
+    }
+  
+  .card-header {
+    color: var(--primary);
+    background-color: var(--tertiary);
+    padding: 5px;
+    text-align: left;
+  }
+  
+  .card-body {
+    padding: 5px;
+  } 
+
+  /* need cards for 3 "roles" - manager, engineers and intern(s)
+  header will entail 2 lines, first line with first name h1, 2nd line with
+    icon representative of position and position in h2 font
+    body of card will be primary color and have 3 elements append
+    id & email will be common to all 3, 3rd append will depend on role*/
