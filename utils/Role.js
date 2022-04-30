@@ -15,4 +15,16 @@ class Role {
     }
 }
 
+
+  // returns an object with employee properties - use this to create cards?
+  this.getRole = function() {
+    return {
+      name: this.name,
+      id: this.id,
+      email: this.email,
+      role: this.roles // array officeNumber / gitHub / school
+    };
+  };
+
+
 module.exports = Role;

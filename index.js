@@ -63,65 +63,116 @@ const promptManager = () => {
     ]);
 };
 
-   
-//     const promptTeam = teamData => {
-    // console.log(`Please choose one of the following options from the menu - add Engineer, add Intern, Finish`)
+const promptTeam = teamData => {
+console.log(`Please choose one of the following options from the menu - add Engineer, add Intern, Finish`)
 
-//  switch()
-// case: 'Engineer', same 1st 3 questions from above plus:         {   
-//             type: 'input',
-//             name:  'github',
-//             message: 'Please enter your Github name (required)',
-//             validate:   githubAdded => {
-//                 if (githubAdded) {
-//                     return true;
-//                 } else {
-//                     console.log('Please enter your GitHub name');
-//                     return false;
-//                 }
-//             }    
-//         },
-// case: 'Intern', again same 3 questions from above plus:
+// need function to create menu with add engineer / add intern / quit options
 
-//         {   
-//             type: 'input',
-//             name:  'school',
-//             message: 'Please enter school attended (required)',
-//             validate:   schoolAdded => {
-//                 if (schoolAdded) {
-//                     return true;
-//                 } else {
-//                     console.log('Please enter the name of your school');
-//                     return false;
-//                 }
-//             }    
-//         },
-// case: 'Finish' - exit and create team portfolio page
+    switch(menuOption) {
 
-// // answering the last question should trigger a function that brings up a menu with option to add engineer(s) or intern(s)
-// // clicking enter should bring menu up again and continue to do so for each entry until finished.
-// // include a Quit button  if Mgr elects to continue, click to add, otherwise click quit to quit
-// // the Quit action will then bring up the writeFile function
-// // use module 10 score grid as template for team roster
+    case "Engineer":
+    case "Intern":      {
+        console.log(`Please provide the following information for the employee`);
+       
+        // create array for employees?
+        if (teamData.employees) {
+            teamData.employees = [];
+        }
 
-      
-//     ]);
-// };
+        return inquirer
+        .prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: "Please enter employee's name. (required)",
+            validate: nameEntered => {
+                if (nameEntered) {
+                    return true;
+                } else {
+                    console.log('Please enter name of employee being added');
+                    return false;
+                }    
+            }
+        },
+        {   
+            type: 'input',
+            name: 'id',
+            message: "Please enter employee's ID number (required)",
+            validate: idEntered => {
+                if (idEntered) {
+                    return true;
+                } else {
+                    console.log('Please enter ID number for employee being added');
+                    return false;
+                }
+            }
+        },       
+        {   
+            type: 'input',
+            name: 'email',
+            message: "Please enter employee's email address (required)",
+            validate:   emailAdded => {
+                if (emailAdded) {
+                    return true;
+                } else {
+                    console.log('Please enter email address for employee being added');
+                    return false;
+                }
+            }    
+        },
+        
+       //
+        
+       //  type: 'input',
+       //        name:  'github',
+       //          message: "Please enter Engineer's Github name (required)",
+       //          validate:   githubAdded => {
+       //           if (githubAdded) {
+       //                  return true;
+       //              } else {
+       //                  console.log("Please enter employee's GitHub name");
+       //                  return false;
+    //                 }
+    //             }    
+    //         },
+    // case: 'Intern', again same 3 questions from above plus:
 
+    //         {   
+    //             type: 'input',
+    //             name:  'school',
+    //             message: 'Please enter school attended (required)',
+    //             validate:   schoolAdded => {
+    //                 if (schoolAdded) {
+    //                     return true;
+    //                 } else {
+    //                     console.log('Please enter the name of intern's school');
+    //                     return false;
+    //                 }
+    //             }    
+    //         },
+     //  case 'Finish': {
+         // init()
+
+        
+        ]);
+      };
+    };
+};
+//
 
 // function to initalize app and create array of answers required to population the template and then generate the README
 // will need to accommodate to accept arrays for manager and each employee type
 function init() {
     promptManager()
-        .then(answers => {
-        const generatedTeamRoster = generateTeamRoster(answers);
-    
-        // generate readme
-        fs.writeFileSync('./dist/teamRoster.html', generatedTeamRoster, err => {
-            if (err) throw err;
-        });
-    });
-};
+        .then(promptTeam)
+        .then(teamData => {
+        return generateTeamTemplate(teamData);
+    })
+        // generate html page with employee cards
+        fs.writeFile('./dist/teamRoster.html', generatedTeamTemplate, err => {
+           if (err) throw err;
  
+});
+}
 //Function call to initialize app
 init();
