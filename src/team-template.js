@@ -1,19 +1,19 @@
 
 
 
-module.exports = templateData => {
+module.exports = teamData => {
     // destructure page data by section
      // this will create three variables based on data in templateData
-    const {projects, about, ...header} = templateData;
+    const {name, id, email, role} = teamData;
 
 
     return `
     
-    //console.log(templateData);
+    //console.log(teamData);
 
     const header = {
-        name: templateData.name,
-        github: templateData.github
+        name: teamData.name,
+        role: teamData.role
     };
    
     
@@ -29,17 +29,18 @@ module.exports = templateData => {
     <link rel="stylesheet" href="./style.css>
     <title>Team-Profile-Generator</title>
 </head>
- // add containers for team members here
-
+ 
 <body>
 
 <header>
     <h1 class="title">My Team</h1>
 </header>
 <main class="team-board">
+// add containers for team members here
+
         
-    ${generateAbout(about)}
-    ${generateProjects(projects)}
+    ${()}
+    ${()}
     
 </main>
 
