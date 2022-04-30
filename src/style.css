@@ -59,6 +59,8 @@
   
   .card-body {
     padding: 5px;
+    background-color: var(--primary);
+    color: var(--dark);
   } 
 
   /* need cards for 3 "roles" - manager, engineers and intern(s)
