@@ -71,7 +71,7 @@
 </html>
  
  `;
-};
 
-module.exports = generatingTeamTemplate;     
+
+module.exports = generateTeamTemplate;     
       

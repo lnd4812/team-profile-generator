@@ -1,5 +1,5 @@
 class Role {
-// use this to create the difference cards for each role?  role will be passed in from inquirer prompt
+// use this to create the different cards for each role?  role will be passed in from inquirer prompt
 
     constructor(role) {
         this.roles = ['manager', 'engineer', 'intern'];
