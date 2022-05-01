@@ -7,6 +7,19 @@ const promptManager = () => {
     
     return inquirer
         .prompt([
+        {    
+            type: 'input',
+            name: 'role',
+            message: "Please enter your title",
+            validate: roleEntered => {
+                if (roleEntered) {
+                    return true;
+                } else {
+                    console.log("Please enter title.");
+                    return false;
+                }    
+            }
+        },
         {
             type: 'input',
             name: 'name',
@@ -60,15 +73,19 @@ const promptManager = () => {
                 }
             }    
         },
-    ]);
+    ])
+// want to create array for manager here and push it to teamData.employees array before starting next function
+    .then(answers => {
+        const manager = answers
+        (teamData.employees).push(manager);
+    });
 };
+
 const promptTeam = teamData => {
 
     // it no employees have been added to team profile array, create one
-    if (!teamData.employees) {
-        teamData.employees =[];
-    }
-    
+        teamData.employees =[manager];
+       
     // ask manager if he/she wants to add an Engineer or an Intern or finish to create the profile.
     inquirer
         .prompt({
@@ -86,13 +103,26 @@ const promptTeam = teamData => {
                 .prompt([
                 {    
                     type: 'input',
+                    name: 'role',
+                    message: "Please reconfirm position being added",
+                    validate: roleEntered => {
+                        if (roleEntered) {
+                            return true;
+                        } else {
+                            console.log("Please enter role.");
+                            return false;
+                        }    
+                    }
+                },
+                {    
+                    type: 'input',
                     name: 'name',
                     message: "Please enter Engineer's name (required)",
                     validate: nameEntered => {
                         if (nameEntered) {
                             return true;
                         } else {
-                            console.log("Please enter Engineer'sname!");
+                            console.log("Please enter Engineer's name!");
                             return false;
                         }    
                     }
@@ -158,6 +188,19 @@ const promptTeam = teamData => {
                 .prompt([
                 {    
                     type: 'input',
+                    name: 'role',
+                    message: "Please reconfirm position being added",
+                    validate: roleEntered => {
+                        if (roleEntered) {
+                            return true;
+                        } else {
+                            console.log("Please enter role.");
+                            return false;
+                        }    
+                    }
+                },
+                {    
+                    type: 'input',
                     name: 'name',
                     message: "Please enter Intern's name (required)",
                     validate: nameEntered => {
@@ -195,7 +238,7 @@ const promptTeam = teamData => {
                         }
                     }    
                 },
-                // Engineer profile includes GitHub Username
+                // Intern's profile includes school name
                 {   
                     type: 'input',
                     name:  'school',
@@ -230,8 +273,8 @@ const promptTeam = teamData => {
 // function to initalize app and create array of answers that then trigger menu with add engineer, add intern or finish options
 function init() {
     promptManager()
-        .then(answers => {
-        const generatingTeamTemplate = generateTeamTemplate(answers);
+        .then(teamData => {
+        const generatingTeamTemplate = generateTeamTemplate(teamData);
  
         //generate html page with employee cards
         fs.writeFile('./dist/team-Template.html', generatingTeamTemplate, err => {

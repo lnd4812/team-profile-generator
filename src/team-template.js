@@ -1,17 +1,45 @@
 
 
-
-
-
+const createCard = teamData => {
+    // where teamData is meant to be an array of subarrays for each employee
+    console.log(teamData);
+ 
     return `
-    
-    //console.log(teamData);
-
-    const header = {
-        name: teamData.name,
-        role: teamData.role
-    };
    
+
+        let teamBoardEl = document.querySelector('.team-board');
+        
+        // create card for each employee
+        let cardEl = document.querySelector('.card');
+        let cardHeaderEl = document.querySelector('.card-header);
+        let cardBodyEl = document.querySelector('.card-body);
+    
+    ${teamData}.forEach(employees => {    
+  
+        const header = {
+            name: ${teamData.employees.name},
+            role: ${teamData.employees.role}
+        };
+
+        const body = {
+            id = ${teamData.employees.id},
+            email = ${teamData.employees.email},
+
+            switch(${teamData.employees.id}) {
+
+                case ${teamData.employees.role} === 'manager':
+                    officeNumber = ${teamData.employees.officeNumber};
+                
+                case ${teamData.employees.role} === '}
+            }
+
+        }
+        
+        let nameEl = document.createElement('h2');
+        let roleEl = document.createElement('h4');
+        cardHeaderEl.appendChild(nameEl);
+        cardHeaderEl.appendChild(roleEl);
+        cardEl.appendChild(cardHeaderEl);
     
 
 <!DOCTYPE html>
@@ -34,30 +62,30 @@
 
 <main class="team-board">
 // add containers for team members here
-    <div class='manager-card'>
+    <div class='card manager'>
         <div class='card-header manager'>
-            <h2>${teamData.name}</h2><br>
+            <h2 class="ee-name"></h2><br>
             <i class="fa-solid fa-business-time"></i>
-            <h4>${teamData.role}</h4>
+            <h4 class="ee-role"></h4>
         </div>
         <div class='card-body manager'>
         </div>
     </div>
 
-    <div class='engineer-card'>
-        <div class='card-header engineerr'>
-            <h2>${teamData.name}</h2><br>
+    <div class='card engineer'>
+        <div class='card-header engineer'>
+            <h2 class="ee-name"></h2><br>
             <i class="fa-solid fa-gears"></i>
-            <h4>${teamData.role}</h4>
+            <h4 class="ee-role"></h4>
         </div>
         <div class='card-body engineer'>
         </div>
     </div>
     <div class='intern-card'>
         <div class='card-header intern'>
-            <h2>${teamData.name}</h2><br>
+            <h2 class="ee-name"></h2><br>
             <i class="fa-solid fa-laptop-code"></i>
-            <h4>${teamData.role}</h4>
+            <h4 class="ee-role"></h4>
         </div>
         <div class='card-body intern'>
         </div>
