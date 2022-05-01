@@ -1,25 +1,18 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+
 // const generateTeamTemplate = require('./src/team-template.js');  // template for team profile
 
 // use inquirer module to prompt manager to start compiling team roster
 const promptManager = () => {
     
+    const teamData = [];
+      
     return inquirer
         .prompt([
-        {    
-            type: 'input',
-            name: 'role',
-            message: "Please enter your title",
-            validate: roleEntered => {
-                if (roleEntered) {
-                    return true;
-                } else {
-                    console.log("Please enter title.");
-                    return false;
-                }    
-            }
-        },
         {
             type: 'input',
             name: 'name',
@@ -74,46 +67,34 @@ const promptManager = () => {
             }    
         },
     ])
-// want to create array for manager here and push it to teamData.employees array before starting next function
+// create array for manager here and push it to teamData array before starting next function
     .then(answers => {
-        const manager = answers
-        (teamData.employees).push(manager);
+        const {name, id, email, officeNumber} = answers;
+        const manager = new Manager(name, id, email, officeNumber);
+        console.log(manager);
+        teamData.push(manager);
+        promptTeam(teamData);
     });
 };
 
-const promptTeam = teamData => {
+const promptTeam =(teamData) => {
 
-    // it no employees have been added to team profile array, create one
-        teamData.employees =[manager];
-       
-    // ask manager if he/she wants to add an Engineer or an Intern or finish to create the profile.
+    // ask manager if to add an Engineer or an Intern or Finish to create the profile.
     inquirer
-        .prompt({
+        .prompt([
+        {
             type: 'checkbox',
             name: 'option',
             message: 'Please choose one of the following options to add an Engineer or Intern to the team profit or Finish to create your team profile',
             choices: ['Engineer', 'Intern', 'Finish']
-        })
+        },    
+        ])
         .then
        {
             switch (option) {
-            case "Engineer":    
+            case 'Engineer':    
 
-                return inquirer
-                .prompt([
-                {    
-                    type: 'input',
-                    name: 'role',
-                    message: "Please reconfirm position being added",
-                    validate: roleEntered => {
-                        if (roleEntered) {
-                            return true;
-                        } else {
-                            console.log("Please enter role.");
-                            return false;
-                        }    
-                    }
-                },
+                inquirer.prompt([
                 {    
                     type: 'input',
                     name: 'name',
@@ -173,33 +154,22 @@ const promptTeam = teamData => {
                     default: "false"
                 }        
                 ]) 
-                .then(teamData => {
-                    teamData.employees.push(employees);
-                    if (teamData.addEmployee) {
-                        return promptTeam(teamData);
+                .then(answers => {
+                    const {name, id, email, github, addEmployee} = answers; 
+                    let engineer = new Engineer(name, id, email, github);
+                    teamData.push(engineer);
+
+                    if (addEmployee) {
+                        promptTeam(teamData);
                     } else {
                         return teamData;
-                    }
+                    }   
                 });
             
             case 'Intern':
-
                 return inquirer
                 .prompt([
-                {    
-                    type: 'input',
-                    name: 'role',
-                    message: "Please reconfirm position being added",
-                    validate: roleEntered => {
-                        if (roleEntered) {
-                            return true;
-                        } else {
-                            console.log("Please enter role.");
-                            return false;
-                        }    
-                    }
-                },
-                {    
+               {    
                     type: 'input',
                     name: 'name',
                     message: "Please enter Intern's name (required)",
@@ -253,33 +223,34 @@ const promptTeam = teamData => {
                     }
                 }
             ]) 
-            .then(teamData => {
-                teamData.employees.push(employees);
-                if (teamData.addEmployee) {
-                    return promptTeam(teamData);
+            .then(answers => {
+                const {name, id, email, school, addEmployee} = answers;
+                let intern = new Intern(name, id, email, school);
+                (teamData).push(intern);
+                if (addEmployee) {
+                    promptTeam(teamData);
                 } else {
                     return teamData;
-                }
-            });   
+                }   
+            });    
             case 'Finish': {
-                return generateTeamTemplate();
+                return teamData;
             }
         }   
     }    
 };
       
-
-
 // function to initalize app and create array of answers that then trigger menu with add engineer, add intern or finish options
 function init() {
     promptManager()
         .then(teamData => {
-        const generatingTeamTemplate = generateTeamTemplate(teamData);
+            console.log(teamData);
+        // const generatingTeamTemplate = generateTeamTemplate(teamData);
  
-        //generate html page with employee cards
-        fs.writeFile('./dist/team-Template.html', generatingTeamTemplate, err => {
-            if (err) throw err;
-        });
+        // //generate html page with employee cards
+        // fs.writeFile('./dist/team-Template.html', generatingTeamTemplate, err => {
+        //     if (err) throw err;
+        // });
     });
 };
 
