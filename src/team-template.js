@@ -14,25 +14,17 @@ const createCard = teamData => {
         let cardHeaderEl = document.querySelector('.card-header);
         let cardBodyEl = document.querySelector('.card-body);
     
-    ${teamData}.forEach(employees => {    
+    ${teamData}.forEach(${teamData.manager}) => {    
   
         const header = {
-            name: ${teamData.employees.name},
-            role: ${teamData.employees.role}
+            name: ${teamData.manager.name},
+            role: 'Manager'
         };
 
         const body = {
-            id = ${teamData.employees.id},
-            email = ${teamData.employees.email},
-
-            switch(${teamData.employees.id}) {
-
-                case ${teamData.employees.role} === 'manager':
-                    officeNumber = ${teamData.employees.officeNumber};
-                
-                case ${teamData.employees.role} === '}
-            }
-
+            id = ${teamData.manager.id},
+            email = ${teamData.manager.email},
+            officeNumber = ${teamData.manager.officeNumber};
         }
         
         let nameEl = document.createElement('h2');
@@ -40,7 +32,28 @@ const createCard = teamData => {
         cardHeaderEl.appendChild(nameEl);
         cardHeaderEl.appendChild(roleEl);
         cardEl.appendChild(cardHeaderEl);
-    
+    };
+    ${teamData}.forEach(${teamData.engineer}) => {    
+  
+        const header = {
+            name: ${teamData.engineer.name},
+            role: 'Manager'
+        };
+
+        const body = {
+            id = ${teamData.engineer.id},
+            email = ${teamData.engineer.email},
+            officeNumber = ${teamData.engineer.officeNumber};
+        }
+        
+        let nameEl = document.createElement('h2');
+        let roleEl = document.createElement('h4');
+        cardHeaderEl.appendChild(nameEl);
+        cardHeaderEl.appendChild(roleEl);
+        cardEl.appendChild(cardHeaderEl);
+    };
+
+
 
 <!DOCTYPE html>
 
@@ -100,6 +113,6 @@ const createCard = teamData => {
  
  `;
 
-
+}
 module.exports = generateTeamTemplate;     
       

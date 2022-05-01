@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+require('events').EventEmitter.prototype._maxListeners = 30;
 
 // const generateTeamTemplate = require('./src/team-template.js');  // template for team profile
 
@@ -77,10 +78,10 @@ const promptManager = () => {
     });
 };
 
-const promptTeam =(teamData) => {
+const promptTeam =teamData => {
 
     // ask manager if to add an Engineer or an Intern or Finish to create the profile.
-    inquirer
+    return inquirer
         .prompt([
         {
             type: 'checkbox',
@@ -89,10 +90,10 @@ const promptTeam =(teamData) => {
             choices: ['Engineer', 'Intern', 'Finish']
         },    
         ])
-        .then
-       {
-            switch (option) {
-            case 'Engineer':    
+        .then(option => {
+       
+            if (option === 'Engineer') {
+             
 
                 inquirer.prompt([
                 {    
@@ -165,8 +166,9 @@ const promptTeam =(teamData) => {
                         return teamData;
                     }   
                 });
-            
-            case 'Intern':
+            }
+            else if (option === 'Intern') {
+           
                 return inquirer
                 .prompt([
                {    
@@ -231,20 +233,20 @@ const promptTeam =(teamData) => {
                     promptTeam(teamData);
                 } else {
                     return teamData;
-                }   
-            });    
-            case 'Finish': {
+                } 
+               });
+            }
+            else if (option ==='Finish') {
                 return teamData;
             }
-        }   
-    }    
-};
+        });   
+    };    
       
 // function to initalize app and create array of answers that then trigger menu with add engineer, add intern or finish options
 function init() {
     promptManager()
         .then(teamData => {
-            console.log(teamData);
+       console.log(teamData);
         // const generatingTeamTemplate = generateTeamTemplate(teamData);
  
         // //generate html page with employee cards
