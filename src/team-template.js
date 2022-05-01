@@ -1,60 +1,13 @@
 
-
-const createCard = teamData => {
+function generateTeamTemplate(teamData) {
     // where teamData is meant to be an array of subarrays for each employee
     console.log(teamData);
+    let manager = teamData[0];
+    let engineer = teamData[1];
+    let intern = teamData[2];
  
     return `
-   
-
-        let teamBoardEl = document.querySelector('.team-board');
-        
-        // create card for each employee
-        let cardEl = document.querySelector('.card');
-        let cardHeaderEl = document.querySelector('.card-header);
-        let cardBodyEl = document.querySelector('.card-body);
-    
-    ${teamData}.forEach(${teamData.manager}) => {    
-  
-        const header = {
-            name: ${teamData.manager.name},
-            role: 'Manager'
-        };
-
-        const body = {
-            id = ${teamData.manager.id},
-            email = ${teamData.manager.email},
-            officeNumber = ${teamData.manager.officeNumber};
-        }
-        
-        let nameEl = document.createElement('h2');
-        let roleEl = document.createElement('h4');
-        cardHeaderEl.appendChild(nameEl);
-        cardHeaderEl.appendChild(roleEl);
-        cardEl.appendChild(cardHeaderEl);
-    };
-    ${teamData}.forEach(${teamData.engineer}) => {    
-  
-        const header = {
-            name: ${teamData.engineer.name},
-            role: 'Manager'
-        };
-
-        const body = {
-            id = ${teamData.engineer.id},
-            email = ${teamData.engineer.email},
-            officeNumber = ${teamData.engineer.officeNumber};
-        }
-        
-        let nameEl = document.createElement('h2');
-        let roleEl = document.createElement('h4');
-        cardHeaderEl.appendChild(nameEl);
-        cardHeaderEl.appendChild(roleEl);
-        cardEl.appendChild(cardHeaderEl);
-    };
-
-
-
+       
 <!DOCTYPE html>
 
 <html lang="en">
@@ -64,7 +17,7 @@ const createCard = teamData => {
     <meta name = "viewport" content="width=device-width, initial-scale-1.0">
     <meta http-equiv="X-UA Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"> 
-    <link rel="stylesheet" href="./style.css>
+    <link rel="stylesheet" href="./src/style.css">
     <title>Team-Profile-Generator</title>
 </head>
  
@@ -74,38 +27,44 @@ const createCard = teamData => {
 </header>
 
 <main class="team-board">
-// add containers for team members here
     <div class='card manager'>
         <div class='card-header manager'>
-            <h2 class="ee-name"></h2><br>
+            <h2 class="ee-name">${manager.name}</h2><br>
             <i class="fa-solid fa-business-time"></i>
-            <h4 class="ee-role"></h4>
+            <h4 class="ee-role">Manager</h4>
         </div>
         <div class='card-body manager'>
+            <div class='id'>id: ${manager.id}</div>
+            <div class='email'>email: ${manager.email}</div>
+            <div class='office-number'>office no: ${manager.officeNumber}</div>
         </div>
     </div>
-
     <div class='card engineer'>
         <div class='card-header engineer'>
-            <h2 class="ee-name"></h2><br>
-            <i class="fa-solid fa-gears"></i>
-            <h4 class="ee-role"></h4>
+            <h2 class="ee-name">${engineer.name}</h2><br>
+            <i class="fa-solid fa-gears"></i></i>
+            <h4 class="ee-role">Engineer</h4>
         </div>
         <div class='card-body engineer'>
+            <div class='id'>id: ${engineer.id}</div>
+            <div class='email'>email: ${engineer.email}</div>
+            <div class='office-number'>GitHub Username: ${engineer.github}</div>
         </div>
     </div>
     <div class='intern-card'>
         <div class='card-header intern'>
-            <h2 class="ee-name"></h2><br>
+            <h2 class="ee-name">${intern.name}</h2><br>
             <i class="fa-solid fa-laptop-code"></i>
-            <h4 class="ee-role"></h4>
+            <h4 class="ee-role">Intern</h4>
         </div>
         <div class='card-body intern'>
+            <div class='id'>id: ${intern.id}</div>
+            <div class='email'>email: ${intern.email}</div>
+            <div class='office-number'>school: ${intern.school}</div>
         </div>
-    </div>
-      
-    
-</main>
+     </div>
+     
+    </main>
 
 </body>
 <script src="./assets/js/script.js"></script>

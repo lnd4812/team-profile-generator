@@ -47,7 +47,7 @@
  /* CARDS */
 .card {
     margin: 0 0 20px 0;
-    border: 3px solid var(--dark);
+    border: none;
     }
   
   .card-header {
