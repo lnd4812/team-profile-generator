@@ -17,7 +17,7 @@ function generateTeamTemplate(teamData) {
     <meta name = "viewport" content="width=device-width, initial-scale-1.0">
     <meta http-equiv="X-UA Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"> 
-    <link rel="stylesheet" href="./src/style.css">
+    <link rel="stylesheet" href="../src/style.css">
     <title>Team-Profile-Generator</title>
 </head>
  
@@ -48,7 +48,7 @@ function generateTeamTemplate(teamData) {
         <div class='card-body engineer'>
             <div class='id'>id: ${engineer.id}</div>
             <div class='email'>email: ${engineer.email}</div>
-            <div class='office-number'>GitHub Username: ${engineer.github}</div>
+            <div class='github'>GitHub Username: ${engineer.github}</div>
         </div>
     </div>
     <div class='intern-card'>
@@ -60,14 +60,13 @@ function generateTeamTemplate(teamData) {
         <div class='card-body intern'>
             <div class='id'>id: ${intern.id}</div>
             <div class='email'>email: ${intern.email}</div>
-            <div class='office-number'>school: ${intern.school}</div>
+            <div class='school'>school: ${intern.school}</div>
         </div>
      </div>
      
     </main>
 
 </body>
-<script src="./assets/js/script.js"></script>
 </html>
  
  `;
