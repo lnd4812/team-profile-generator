@@ -1,10 +1,7 @@
 
 function generateTeamTemplate(teamData) {
     // where teamData is meant to be an array of subarrays for each employee
-    console.log(teamData);
-    let manager = teamData[0];
-    let engineer = teamData[1];
-    let intern = teamData[2];
+    
  
     return `
        
@@ -29,44 +26,42 @@ function generateTeamTemplate(teamData) {
 <main class="team-board">
     <div class='card manager'>
         <div class='card-header manager'>
-            <h2 class="ee-name">${manager.name}</h2><br>
-            <i class="fa-solid fa-business-time"></i>
-            <h4 class="ee-role">Manager</h4>
+            <h2 class="ee-name"></h2><br>
+            <h4 class="ee-role"></h4>
         </div>
         <div class='card-body manager'>
-            <div class='id'>id: ${manager.id}</div>
-            <div class='email'>email: ${manager.email}</div>
-            <div class='office-number'>office no: ${manager.officeNumber}</div>
+            <div class='id'></div>
+            <div class='email'></div>
+            <div class='last office-number'></div>
         </div>
     </div>
     <div class='card engineer'>
         <div class='card-header engineer'>
-            <h2 class="ee-name">${engineer.name}</h2><br>
-            <i class="fa-solid fa-gears"></i></i>
-            <h4 class="ee-role">Engineer</h4>
+            <h2 class="ee-name"></h2><br>
+            <h4 class="ee-role"></h4>
         </div>
         <div class='card-body engineer'>
-            <div class='id'>id: ${engineer.id}</div>
-            <div class='email'>email: ${engineer.email}</div>
-            <div class='github'>GitHub Username: ${engineer.github}</div>
+            <div class='id'></div>
+            <div class='email'></div>
+            <div class='last github'></div>
         </div>
     </div>
     <div class='intern-card'>
         <div class='card-header intern'>
-            <h2 class="ee-name">${intern.name}</h2><br>
-            <i class="fa-solid fa-laptop-code"></i>
-            <h4 class="ee-role">Intern</h4>
+            <h2 class="ee-name"></h2><br>
+            <h4 class="ee-role"></h4>
         </div>
         <div class='card-body intern'>
-            <div class='id'>id: ${intern.id}</div>
-            <div class='email'>email: ${intern.email}</div>
-            <div class='school'>school: ${intern.school}</div>
+            <div class='id'></div>
+            <div class='email'></div>
+            <div class='last school'></div>
         </div>
      </div>
      
     </main>
 
 </body>
+<script src="../src/script.js"></script>
 </html>
  
  `;
