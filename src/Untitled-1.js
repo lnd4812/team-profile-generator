@@ -96,3 +96,35 @@ function generateTeamTemplate(teamData) {
 }
 module.exports = generateTeamTemplate;     
       
+<div class='card manager'>
+        <div class='card-header manager'>
+            <h2 class="ee-name"></h2><br>
+            <h4 class="ee-role"></h4>
+        </div>
+        <div class='card-body manager'>
+            <div class='id'></div>
+            <div class='email'></div>
+            <div class='last office-number'></div>
+        </div>
+    </div>
+    <div class='card engineer'>
+        <div class='card-header engineer'>
+            <h2 class="ee-name"></h2><br>
+            <h4 class="ee-role"></h4>
+        </div>
+        <div class='card-body engineer'>
+            <div class='id'></div>
+            <div class='email'></div>
+            <div class='last github'></div>
+        </div>
+    </div>
+    <div class='intern-card'>
+        <div class='card-header intern'>
+            <h2 class="ee-name"></h2><br>
+            <h4 class="ee-role"></h4>
+        </div>
+        <div class='card-body intern'>
+            <div class='id'></div>
+            <div class='email'></div>
+            <div class='last school'></div>
+        </div>
