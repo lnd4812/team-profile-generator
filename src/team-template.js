@@ -16,6 +16,7 @@ function generateTeamTemplate(teamData) {
                     email: teamData[i].manager.email,
                     officenumber: teamData[i].manager.officeNumber
                 } 
+                return manager;
             }
             else if (teamData[i].includes('engineer')) {
                 const header = {
@@ -27,6 +28,7 @@ function generateTeamTemplate(teamData) {
                     email: teamData[i].engineer.email,
                     github: teamData[i].engineer.github
                 } 
+                return engineer;
             }
             else if (teamData[i].includes('intern')){
                 const header = {
@@ -38,9 +40,10 @@ function generateTeamTemplate(teamData) {
                     email: teamData[i].intern.email,
                     school: teamData[i].intern.school
                 } 
+                return intern;
             }     
         }
-    }
+    };
     
 
     // where teamData is meant to be an array of subarrays for each employee    

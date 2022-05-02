@@ -70,28 +70,30 @@ const promptManager = () => {
     .then(answers => {
         const {name, id, email, officeNumber} = answers;
         const manager = new Manager(name, id, email, officeNumber);
-        console.log(manager);
-        teamData.push(manager);
+        // console.log(manager);
+        teamData.push(manager);  
         promptTeam(teamData);
     });
 };
 
-const promptTeam =() => {
+const promptTeam = teamData => {
+    
+    console.log(teamData); 
 
-    // ask manager if to add an Engineer or an Intern or Finish to create the profile.
-    inquirer
+    // ask if manager wants to add an Engineer or an Intern or Finish to create the profile.
+    return inquirer
         .prompt([
         {
             type: 'checkbox',
             name: 'option',
-            message: 'Please choose one of the following options to add an Engineer or Intern to the team profit or Finish to create your team profile',
-            choices: ['Engineer', 'Intern', 'Finish']
-        },    
-        ])
-      .then(option => {
-          switch(option) {
-              case 'Engineer':
-              return inquirer.prompt ([        
+            message: 'Please check on Engineer or Intern option below to add to team. Otherwise, check Finish to complete the team profile.',
+            choices: ['Engineer', 'Intern', 'Finish'] 
+        }    
+    ])
+    .then(option => {
+       if (option ==='Engineer') {
+            
+        inquirer.prompt ([        
               {
                   type: 'input',
                   name: 'name',
@@ -122,7 +124,7 @@ const promptTeam =() => {
                   type: 'input',
                   name: 'email',
                   message: 'Please enter email address for Engineer (required)',
-                  validate:   emailAdded => {
+                  validate: emailAdded => {
                       if (emailAdded) {
                           return true;
                       } else {
@@ -147,22 +149,23 @@ const promptTeam =() => {
               {   type: "confirm",
                   name: "addEmployee",
                   message: "Would you like to add another employee?",
-                  default: "false"
+                  default: "true"
               }    
               ])
               .then(answers => {
               const {name, id, email, github, addEmployee} = answers;
               let engineer = new Engineer(name, id, email, github);
-              teamDatapush(engineer);
+              teamData.push(engineer);
               if (addEmployee) {
                   return promptTeam(teamData);
               } else {
                   return teamData;
               }
-          });
-              case 'Intern': 
-              return inquirer
-                      .prompt([
+            }) 
+          
+            }  else if (option ==='Intern') {
+               inquirer
+                    .prompt([
                   {    
                       type: 'input',
                       name: 'name',
@@ -220,25 +223,26 @@ const promptTeam =() => {
                       type: "confirm",
                       name: "addEmployee",
                       message: "Would you like to add another employee?",
-                      default: "false"
+                      default: "true"
                   }    
               ])
               .then(answers => {
-              const {name, id, email, school, addEmployee} = answers;
-              let intern = new Intern(name, id, email, school);
-              teamData.push(intern);
-              if (addEmployee) {
+                const {name, id, email, school, addEmployee} = answers;
+                let intern = new Intern(name, id, email, school);
+                teamData.push(intern);
+                if (addEmployee) {
                   return promptTeam(teamData);
-              } else {
+                } else {
                   return teamData;
-              }
-          });
-              case 'Finish':
-              return teamData;
-          };
-      });
-  }; 
-      
+                }
+            })
+            
+            } else if (option === 'Function') {
+                return teamData;
+            };
+        });
+    };
+
 // function to initalize app and create array of answers that then trigger menu with add engineer, add intern or finish options
 function init() {
     promptManager()
