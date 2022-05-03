@@ -7,6 +7,8 @@ function generateTeamTemplate(teamData) {
     for (var i = 0; i < teamData.length; i++) { 
         for (var j=0; j<teamData[i].length; j++) {
             if (teamData[i].includes('manager')) {
+
+               
                 const header = {
                     name: teamData[i].manager.name,
                     role: "Manager"

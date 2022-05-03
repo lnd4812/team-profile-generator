@@ -4,6 +4,7 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const generateTeamTemplate = require('./src/team-template');
+const { mainModule } = require('process');
 
 // use inquirer module to prompt manager to start compiling team roster
 const promptManager = () => {
@@ -77,21 +78,35 @@ const promptManager = () => {
 };
 
 const promptTeam = teamData => {
-    
+    // just checking that data from promptManager passed to promptTeam
     console.log(teamData); 
 
-    // ask if manager wants to add an Engineer or an Intern or Finish to create the profile.
-    return inquirer
-        .prompt([
-        {
-            type: 'checkbox',
-            name: 'option',
-            message: 'Please check on Engineer or Intern option below to add to team. Otherwise, check Finish to complete the team profile.',
-            choices: ['Engineer', 'Intern', 'Finish'] 
-        }    
-    ])
-    .then(option => {
-       if (option ==='Engineer') {
+    const menu = async() => {
+   
+        const addEmployeeOption = () => {
+            const selection = new Promise((resolve, reject) => {
+            // ask if manager wants to add an Engineer or an Intern or Finish to create the profile.
+             inquirer
+            .prompt([
+            {
+                type: 'checkbox',
+                name: 'option',
+                message: 'If you would like to add a member to your team, please check m. Otherwise, check Finish to complete the team profile.',
+                choices: ['Engineer', 'Intern', 'Finish']
+            }
+            ])
+            .then(option => {
+                resolve(option);
+            });
+        }); 
+        return selection;    
+    }
+        const menuSelect = await addEmployeeOption();
+        console.log(menuSelect)
+    }
+    menu();
+  
+    if (menuSelect ==='Engineer') {
             
         inquirer.prompt ([        
               {
@@ -163,7 +178,7 @@ const promptTeam = teamData => {
               }
             }) 
           
-            }  else if (option ==='Intern') {
+            }  else if (menuSelect ==='Intern') {
                inquirer
                     .prompt([
                   {    
@@ -237,13 +252,13 @@ const promptTeam = teamData => {
                 }
             })
             
-            } else if (option === 'Function') {
+            } else if (menuSelect === 'Finish') {
                 return teamData;
             };
-        });
-    };
-
-// function to initalize app and create array of answers that then trigger menu with add engineer, add intern or finish options
+        };   
+ 
+    
+    // function to initalize app and create array of answers for team profile
 function init() {
     promptManager()
         .then(teamData => {
