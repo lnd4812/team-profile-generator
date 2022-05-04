@@ -81,21 +81,23 @@ const promptManager = () => {
 const promptTeam = () => {
   // just checking that data from promptManager passed to promptTeam
   console.log(teamData);
-
+  
   // ask if manager wants to add an Engineer or an Intern or Finish to create the profile.
   inquirer
     .prompt([
       {
         type: "checkbox",
-        name: "option",
-        message: "If you would like to add a member to your team, please check option blelow. Otherwise, check Finish to complete the team profile.",
+        name: "options",
+        message: "If you would like to add a member to your team, please check option below. Otherwise, check Finish to complete the team profile.",
         choices: ["Engineer", "Intern", "Finish"],
-      },
+      } 
     ])
-    .then((option) => {
-      console.log(option);
+    .then(responses => {
+     
+    // "extract" response from options array  
+    let option = responses.options[0];
 
-      if (option.includes('Engineer')) {
+     if (option === 'Engineer') {
         inquirer
           .prompt([
             {
@@ -167,7 +169,7 @@ const promptTeam = () => {
               return teamData;
             }
           });
-      } else if (option.includes("Intern")) {
+      } else if (option === "Intern") {
         inquirer
           .prompt([
             {
@@ -240,10 +242,10 @@ const promptTeam = () => {
               return teamData;
             }
           });
-      } else if (option.includes("Finish")) {
+      } else if (option === "Finish") {
         return teamData;
       }
-    });
+  });
 };
 
 // function to initalize app and create array of answers for team profile
@@ -253,12 +255,11 @@ async function init() {
  await promptTeam(); 
 
    
-    // console.log(teamData, 'this is the undefined ');
-    // const generatingTeamTemplate = generateTeamTemplate(teamData);
-    // // //generate html page with employee cards
-    // fs.writeFile("./dist/team-Template.html", generatingTeamTemplate, (err) => {
-    //   if (err) throw err;
-    // })
+    const generatingTeamTemplate = generateTeamTemplate(teamData);
+    // //generate html page with employee cards
+    fs.writeFile("./dist/team-Template.html", generatingTeamTemplate, (err) => {
+      if (err) throw err;
+    })
 }
 
 //Function call to initialize app
