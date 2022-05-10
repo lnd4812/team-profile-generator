@@ -71,15 +71,19 @@ const promptManager = () => {
       .then((answers) => {
         const { name, id, email, officeNumber } = answers;
         const manager = new Manager(name, id, email, officeNumber);
+        // console.log(manager);
         teamData.push(manager);
+       // promptTeam(teamData);
       })
   );
 };
 
 const promptTeam = () => {
-    
+  // just checking that data from promptManager passed to promptTeam
+  console.log(teamData);
+  
   // ask if manager wants to add an Engineer or an Intern or Finish to create the profile.
-  return inquirer
+  inquirer
     .prompt([
       {
         type: "checkbox",
@@ -90,13 +94,12 @@ const promptTeam = () => {
     ])
     .then(responses => {
      
-      // "extract" response from options array  
-      let option = responses.options[0];
+    // "extract" response from options array  
+    let option = responses.options[0];
 
-      switch(option) {
-        case "Engineer":
-          inquirer
-            .prompt([
+     if (option === 'Engineer') {
+        inquirer
+          .prompt([
             {
               type: "input",
               name: "name",
@@ -113,7 +116,7 @@ const promptTeam = () => {
             {
               type: "input",
               name: "id",
-              message: "Please enter Engineer's ID number (required)",
+              message: "Please enter your ID number (required)",
               validate: (idEntered) => {
                 if (idEntered) {
                   return true;
@@ -166,10 +169,9 @@ const promptTeam = () => {
               return teamData;
             }
           });
-        break;
-        case "Intern":
-          inquirer
-            .prompt([
+      } else if (option === "Intern") {
+        inquirer
+          .prompt([
             {
               type: "input",
               name: "name",
@@ -240,26 +242,24 @@ const promptTeam = () => {
               return teamData;
             }
           });
-        break;  
-        case 'Finish':
+      } else if (option === "Finish") {
         return teamData;
-      };
-      console.log(teamData);
-    });
+      }
+  });
 };
 
 // function to initalize app and create array of answers for team profile
 async function init() {
-  await  promptManager()
+ await  promptManager()
  
-  await promptTeam(); 
+ await promptTeam(); 
 
-   console.log(teamData, 'undefined?')
-    // const generatingTeamTemplate = generateTeamTemplate(teamData);
-    // // //generate html page with employee cards
-    // fs.writeFile("./dist/team-Template.html", generatingTeamTemplate, (err) => {
-    //   if (err) throw err;
-    // })
+   
+//     const generatingTeamTemplate = generateTeamTemplate(teamData);
+//     // //generate html page with employee cards
+//     fs.writeFile("./dist/team-Template.html", generatingTeamTemplate, (err) => {
+//       if (err) throw err;
+//     })
 }
 
 //Function call to initialize app
