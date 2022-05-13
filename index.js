@@ -101,30 +101,61 @@ const promptTeam = () => {
             {
               type: "input",
               name: "name",
-              message: "Enter name of Engineer." 
+              message: "Enter name of Engineer.", 
+              validate: nameEntered => {
+                if (nameEntered) {
+                    return true;
+                } else {
+                    console.log('Please enter name of Engineer');
+                    return false;
+                }
+              }
             },
             {
-              type: "input",
-              name: "id",
-              message: "Please enter your ID number (required)",
+                type: 'input',
+                name: 'id',
+                message: 'Please enter your ID number (required)',
+                validate:   idEntered => {
+                    if (idEntered) {
+                        return true;
+                    } else {
+                        console.log('Please enter ID number');
+                    return false;
+                    }
+                }
+            },       
+            {   
+                type: 'input',
+                name: 'email',
+                message: 'Please enter email address for Engineer (required)',
+                validate: emailAdded => {
+                    if (emailAdded) {
+                        return true;
+                    } else {
+                        console.log('Please enter the email address');
+                        return false;
+                    }
+                }    
             },
-            {
-              type: "input",
-              name: "email",
-              message: "Please enter email address for Engineer (required)",
+            {   
+                type: 'input',
+                name:  'github',
+                message: 'Please GitHub username for Engineer. (required)',
+                validate:   githubAdded => {
+                    if (githubAdded) {
+                        return true;
+                    } else {
+                        console.log("Please enter engineer's gitHub username.");
+                        return false;
+                    }
+                }    
             },
-            {
-              type: "input",
-              name: "github",
-              message: "Please GitHub username for Engineer. (required)",    
-            },
-            {
-              type: "confirm",
-              name: "addEmployee",
-              message: "Would you like to add another employee?",
-              default: "true",
-            },
-          ])
+            {   type: "confirm",
+                name: "addEmployee",
+                message: "Would you like to add another employee?",
+                default: "true"
+            }    
+            ])
           .then((answers) => {
             const { name, id, email, github, addEmployee } = answers;
             let engineer = new Engineer(name, id, email, github);
@@ -139,65 +170,65 @@ const promptTeam = () => {
         return inquirer
           .prompt([
             {
-              type: "input",
-              name: "name",
-              message: "Please enter Intern's name (required)",
-              validate: (nameEntered) => {
-                if (nameEntered) {
-                  return true;
-                } else {
-                  console.log("Please enter Intern's name!");
-                  return false;
+              type: 'input',
+                name: 'name',
+                message: "Please enter Intern's name (required)",
+                validate: nameEntered => {
+                    if (nameEntered) {
+                        return true;
+                    } else {
+                        console.log("Please enter Intern's name!");
+                        return false;
+                    }    
                 }
-              }
             },
-            {
-              type: "input",
-              name: "id",
-              message: "Please enter Intern's ID number (required)",
-              validate: (idEntered) => {
-                if (idEntered) {
-                  return true;
-                } else {
-                  console.log("Please enter ID number");
-                  return false;
+            {   
+                type: 'input',
+                name: 'id',
+                message: "Please enter Intern's ID number (required)",
+                validate:   idEntered => {
+                    if (idEntered) {
+                        return true;
+                    } else {
+                        console.log('Please enter ID number');
+                        return false;
+                    }
                 }
-              }
-            },
-            {
-              type: "input",
-              name: "email",
-              message: "Please enter Intern's email address (required)",
-              validate: (emailAdded) => {
-                if (emailAdded) {
-                  return true;
-                } else {
-                  console.log("Please enter email address");
-                  return false;
-                }
-              }
+            },       
+            {   
+                type: 'input',
+                name: 'email',
+                message: "Please enter Intern's email address (required)",
+                validate:   emailAdded => {
+                    if (emailAdded) {
+                        return true;
+                    } else {
+                        console.log('Please enter email address');
+                        return false;
+                    }
+                }    
             },
             // Intern's profile includes school name
-            {
-              type: "input",
-              name: "school",
-              message: "Please enter Intern's school (required)",
-              validate: (schoolAdded) => {
-                if (schoolAdded) {
-                  return true;
-                } else {
-                  console.log("Please enter Intern's school.");
-                  return false;
+            {   
+                type: 'input',
+                name:  'school',
+                message: "Please enter Intern's school (required)",
+                validate:   schoolAdded => {
+                    if (schoolAdded) {
+                        return true;
+                    } else {
+                        console.log("Please enter Intern's school.");
+                        return false;
+                    }
                 }
-              }
             },
-            {
-              type: "confirm",
-              name: "addEmployee",
-              message: "Would you like to add another employee?",
-              default: "true",
-            },
-          ])
+            {   
+                type: "confirm",
+                name: "addEmployee",
+                message: "Would you like to add another employee?",
+                default: "true"
+            }    
+        ])
           .then((answers) => {
             const { name, id, email, school, addEmployee } = answers;
             let intern = new Intern(name, id, email, school);
