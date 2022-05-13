@@ -79,16 +79,14 @@ const promptManager = () => {
 };
 
 const promptTeam = () => {
-  // just checking that data from promptManager passed to promptTeam
-  console.log(teamData);
-  
+   
   // ask if manager wants to add an Engineer or an Intern or Finish to create the profile.
   inquirer
     .prompt([
       {
         type: "checkbox",
         name: "options",
-        message: "If you would like to add a member to your team, please check option below. Otherwise, check Finish to complete the team profile.",
+        message: "Please check either Engineer or Intern to add to team, or check Finish to exit the menu and create team profile.",
         choices: ["Engineer", "Intern", "Finish"],
       } 
     ])
@@ -96,61 +94,29 @@ const promptTeam = () => {
      
     // "extract" response from options array  
     let option = responses.options[0];
-
-     if (option === 'Engineer') {
-        inquirer
+   
+    if (option === 'Engineer') {
+        return inquirer
           .prompt([
             {
               type: "input",
               name: "name",
-              message: "Enter name of Engineer. (Required)",
-              validate: (nameEntered) => {
-                if (nameEntered) {
-                  return true;
-                } else {
-                  console.log("Please enter name of Engineer");
-                  return false;
-                }
-              },
+              message: "Enter name of Engineer." 
             },
             {
               type: "input",
               name: "id",
               message: "Please enter your ID number (required)",
-              validate: (idEntered) => {
-                if (idEntered) {
-                  return true;
-                } else {
-                  console.log("Please enter ID number");
-                  return false;
-                }
-              },
             },
             {
               type: "input",
               name: "email",
               message: "Please enter email address for Engineer (required)",
-              validate: (emailAdded) => {
-                if (emailAdded) {
-                  return true;
-                } else {
-                  console.log("Please enter the email address");
-                  return false;
-                }
-              },
             },
             {
               type: "input",
               name: "github",
-              message: "Please GitHub username for Engineer. (required)",
-              validate: (githubAdded) => {
-                if (githubAdded) {
-                  return true;
-                } else {
-                  console.log("Please enter engineer's gitHub username.");
-                  return false;
-                }
-              },
+              message: "Please GitHub username for Engineer. (required)",    
             },
             {
               type: "confirm",
@@ -164,13 +130,13 @@ const promptTeam = () => {
             let engineer = new Engineer(name, id, email, github);
             teamData.push(engineer);
             if (addEmployee) {
-              return promptTeam(teamData);
+              promptTeam(teamData);
             } else {
-              return teamData;
+              console.log(teamData);
             }
           });
       } else if (option === "Intern") {
-        inquirer
+        return inquirer
           .prompt([
             {
               type: "input",
@@ -183,7 +149,7 @@ const promptTeam = () => {
                   console.log("Please enter Intern's name!");
                   return false;
                 }
-              },
+              }
             },
             {
               type: "input",
@@ -196,7 +162,7 @@ const promptTeam = () => {
                   console.log("Please enter ID number");
                   return false;
                 }
-              },
+              }
             },
             {
               type: "input",
@@ -209,7 +175,7 @@ const promptTeam = () => {
                   console.log("Please enter email address");
                   return false;
                 }
-              },
+              }
             },
             // Intern's profile includes school name
             {
@@ -223,7 +189,7 @@ const promptTeam = () => {
                   console.log("Please enter Intern's school.");
                   return false;
                 }
-              },
+              }
             },
             {
               type: "confirm",
@@ -237,29 +203,25 @@ const promptTeam = () => {
             let intern = new Intern(name, id, email, school);
             teamData.push(intern);
             if (addEmployee) {
-              return promptTeam(teamData);
+              promptTeam(teamData);
             } else {
-              return teamData;
-            }
+              console.log(teamData);
+             }
           });
-      } else if (option === "Finish") {
-        return teamData;
-      }
-  });
-};
-
+        }
+        console.log('bottom', teamData);
+     });
+  }
 // function to initalize app and create array of answers for team profile
 async function init() {
  await  promptManager()
- 
  await promptTeam(); 
-
-   
-//     const generatingTeamTemplate = generateTeamTemplate(teamData);
-//     // //generate html page with employee cards
-//     fs.writeFile("./dist/team-Template.html", generatingTeamTemplate, (err) => {
-//       if (err) throw err;
-//     })
+ 
+ //const generatingTeamTemplate = generateTeamTemplate(teamData);
+    // //generate html page with employee cards
+    // fs.writeFile("./dist/team-Template.html", generatingTeamTemplate, (err) => {
+    //   if (err) throw err;
+    // })
 }
 
 //Function call to initialize app
