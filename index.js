@@ -3,7 +3,7 @@ const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const generateTeamTemplate = require("./src/team-template");
+// const generateTeamTemplate = require("./src/team-template");
 
 // use inquirer module to prompt manager to start compiling team roster
 const teamData = [];
@@ -267,7 +267,7 @@ const promptTeam = () => {
             },
           ])
           .then((answers) => {
-            const { name, id, role, email, school, addEmployee } = answers;
+            const { name, role, id, email, school, addEmployee } = answers;
             let intern = new Intern(name, role, id, email, school);
             teamData.push(intern);
             if (addEmployee) {
@@ -284,20 +284,27 @@ const promptTeam = () => {
 async function init() {
  await  promptManager()
  await promptTeam()
-  .then(teamData => {
-    return generateTeamTemplate(teamData);
-  })
-  .then(writeFileResponse => {
-    console.log(writeFileResponse);
-  })
-  .catch(err => {
-    console.log(err);
-  });
-
 }
-    // ("./dist/team-Template.html", generatingTeamTemplate, (err) => {
-    //   if (err) throw err;
-    //   })
+
+  // .then(teamData => {
+    // return generateTeamTemplate(teamData);
+ 
+  // console.log('bottom', teamData);
+  // const generatingTeamTemplate = generateTeamTemplate(teamData);
+  //   // //generate html page with employee cards
+  //   fs.writeFile("./dist/team-Template.html", generatingTeamTemplate, (err) => {
+  //      if (err) throw err;
+  //    })
+  
+  
+
+  // .then(writeFileResponse => {
+  //   console.log(writeFileResponse);
+  // })
+  // .catch(err => {
+  //   console.log(err);
+  // });
+
 
 
 //Function call to initialize app

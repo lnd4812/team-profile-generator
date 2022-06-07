@@ -1,22 +1,22 @@
-const fs = require("fs");
-const inquirer = require("inquirer");
-const Manager = require("../lib/Manager");
-const Engineer = require("../lib/Engineer");
-const Intern = require("../lib/Intern");
-// const generateTeamTemplate = require("./src/team-template");
+// const fs = require("fs");
+// const inquirer = require("inquirer");
+// const Manager = require("../lib/Manager");
+// const Engineer = require("../lib/Engineer");
+// const Intern = require("../lib/Intern");
+// // const generateTeamTemplate = require("./src/team-template");
 
-class Profile {
-    constructor() {
-        this.manager;
-        this.engineer;
-        this.intern;
-        this.team = [];
-    }
+// class Profile {
+//     constructor() {
+//         this.manager;
+//         this.engineer;
+//         this.intern;
+//         this.team = [];
+//     }
 
-    buildProfile() {
-        this.manager.push(new Manager(`${team.manager.name}`));
-        this.
-    }
+//     buildProfile() {
+//         this.manager.push(new Manager(`${team.manager.name}`));
+//         this.
+//     }
 
 
 
