@@ -1,10 +1,52 @@
 
-function generateTeamTemplate(teamData) {
+const generateTeamBoard = teamData => {
+    if (!teamData) {
+        return '';
+    }
 
-    const {manager, engineer, intern} = teamData;
+    return `
     
+  
+{
 
-    for (var i = 0; i < teamData.length; i++) { 
+    <div class='card manager'>
+        <div class='card-header manager'>
+            <h2 class="ee-name">${teamData.manager.name}</h2><br>
+            <h4 class="ee-role">${teamData.manager.role}</h4>
+        </div>
+        <div class='card-body manager'>
+            <div class='id'>${teamData.manager.id}</div>
+            <div class='email'>${teamData.manager.email}</div>
+            <div class='last office-number'>${teamData.manager.officeNumber}</div>
+        </div>
+    </div>
+    <div class='card engineer'>
+        <div class='card-header engineer'>
+            <h2 class="ee-name">${teamData.engineer.name}</h2><br>
+            <h4 class="ee-role">${teamData.engineer.role}</h4>
+        </div>
+        <div class='card-body engineer'>
+            <div class='id'>${teamData.engineer.id}</div>
+            <div class='email'>${teamData.engineer.email}</div>
+            <div class='last github'>${teamData.engineer.github}</div>
+        </div>
+    </div>
+    <div class='intern-card'>
+        <div class='card-header intern'>
+            <h2 class="ee-name">${teamData.intern.name}</h2><br>
+            <h4 class="ee-role">${teamData.intern.role}</h4>
+        </div>
+        <div class='card-body intern'>
+            <div class='id'>${teamData.intern.id}</div>
+            <div class='email'>${teamData.intern.email}</div>
+            <div class='last school'>${teamData.intern.school}</div>
+        </div>
+     </div>
+     
+   
+
+
+       for (var i = 0; i < teamData.length; i++) { 
         for (var j=0; j<teamData[i].length; j++) {
             if (teamData[i].includes('manager')) {
 
@@ -46,8 +88,10 @@ function generateTeamTemplate(teamData) {
             }     
         }
     };
-    
-
+ `;
+}   
+module.exports = teamData => {
+    const { manager, engineer, intern } = teamData;
     // where teamData is meant to be an array of subarrays for each employee    
     return `   
        
@@ -73,7 +117,7 @@ function generateTeamTemplate(teamData) {
         ${generateManager(manager)}
         ${generateEngineer(engineer)}
         ${generateIntern(intern)}
-            
+          
     </main>
 
     </body>
