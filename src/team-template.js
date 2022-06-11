@@ -23,7 +23,7 @@ return `
   
         <main class="team-board">        
             for (var i = 0; i < ${team.length}; i++) {             
-            for (var j=0; j < ${teamData[i].length}; j++) {                
+            for (var j=0; j < ${team[i].length}; j++) {                
                 if (${team[i[j]]}.includes('manager)) {                   
                     ${team}
                         .filter((${ employee}) => employee)
