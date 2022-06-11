@@ -1,10 +1,25 @@
-const profile = require('../../Profile');
 
 
-function generateTeamTemplate() {
+
+function generateTeamTemplate(team) {
 
     const { manager, engineer, intern } = team;
     // where team is meant to be an array of subarrays for each employee    
+    console.log(manager,engineer,intern)
+
+
+    //make a function that after checking which type of employee you have sends the data into the employeeCard function
+    
+
+    for (var i = 0; i < team.length; i++) {
+        //         if (this.team[i].getRole(currentEmployee) ==="Manager") {
+        //             // this.employeeCard();
+        //         } else if (this.team[i].getRole(currentEmployee) === "Engineer") {
+        //             this.employeeCard();
+        //         } else if (this.team[i].getRole(currentEmployee) === "Intern") {
+        //             this.employeeCard();
+        //         } return this.outputProfile();  // where profile is the display card for each all employees
+        //     };
 return `    
     <!DOCTYPE html
     <html lang="en">
@@ -77,4 +92,4 @@ return `
     `;
 }
 
-module.exports = generateTeamTemplate(team);    
+module.exports = generateTeamTemplate;    
