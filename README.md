@@ -33,7 +33,7 @@ This application is covered under the MIT license.  [MIT license link](https://c
 
 ## Contributing
 
-Assistance welcome.
+Please visit [Contributor Covenant website](https://contributor-covenant.org) for guidance or reach out directly using the contact informtion below.
 
 ## Testing
 
@@ -53,7 +53,7 @@ My GitHub Username is [github.com/lnd4812](github.com/lnd4812)
 
 ## GitHub Repository
 
-My GitHub repository link for this project is https://github.com/lnd4812/team-profile-generator.git 
+My GitHub repository link for this project is [github.com/lnd4812/team-profile-generator](https://github.com/lnd4812/team-profile-generator)
 
 ## Application Video Link
 
