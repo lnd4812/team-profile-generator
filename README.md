@@ -8,7 +8,7 @@ TEAM PROFILE GENERATOR
 
 ## Description
 
-Use Inquirer Prompt to ask a user to answer a series of questions using the CLI.  The answers would subsequently 
+Use Inquirer Prompt to ask a user to answer a series of questions using the CLI.  The series of questions is set up for the user, as manager, to enter manager specifici properties aftr which the manager is then prompted to add additional employees to the team, either engineers or interns, or to exit the process.  Once exited, responses from the inquirer process are exported to template which creates profile cards for each team member featuring the reponses provided through the inquirer interface.
 
 ## Table of Contents
 
@@ -21,11 +21,11 @@ Use Inquirer Prompt to ask a user to answer a series of questions using the CLI.
 
 ## Installation
 
-To initiate the series of questions, if my coding were correct, typing in node index.js would bring up the first question asking the user to select an option.  In order to integrate with MYSQL, one would start it by typing in "mysql -u root -p" and then entering their mysql password to bring up the mysql prompt.
+The process is initiated by running node app.js in the CLI to bring up the series of questions that the manager must answer in order to generate the team profile.  
 
 ## Usage
 
-
+Allows quick access to employee data such as name, position, id#, email address and, depending on the employee role, office phone number (manager), GitHub username (engineer) or school attended (intern).
 
 ## License
 
@@ -33,7 +33,7 @@ This application is covered under the MIT license.  [MIT license link](https://c
 
 ## Contributing
 
-There is still work to be done, as I need to finish the coding to actually pass the responses from the prompts into the commands for the mysql actions. I also need to to fix whatever error is ending inquirer before allowing a user to enter any information.
+Assistance welcome.
 
 ## Testing
 
@@ -41,7 +41,7 @@ None at this time.
 
 ## Credits
 
-Some assistance was provided in my weekly tutoring session, although we got stuck on the error noted above.  Additional assistance from the TA's during office hours and a number of visits to the Stack Overflow website [https://stackoverflow.com](https://stackoverflow.com).
+Some assistance was provided in my weekly tutoring session, along with additional assistance from the TA's during office hours and a number of visits to the Stack Overflow website [https://stackoverflow.com](https://stackoverflow.com).
 
 ## Questions?
 
@@ -49,11 +49,11 @@ If you have any questions, please see my contact details below:
 
 ## GitHub Username
 
-My GitHub Username is github.com:lnd4812
+My GitHub Username is [github.com/lnd4812](github.com/lnd4812)
 
 ## GitHub Repository
 
-My GitHub repository link for this project is 
+My GitHub repository link for this project is https://github.com/lnd4812/team-profile-generator.git 
 
 ## Application Video Link
 

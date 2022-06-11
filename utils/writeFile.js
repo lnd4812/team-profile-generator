@@ -3,7 +3,7 @@ const { writeFile } = require('../src/team-template');
 
 const teamData = require('./team-responses');
 
-writeFile(generateTeamTemplate(teamData))
+writeFile(generateTeamTemplate(team))
     .then(res => {
         console.log(res);
     })

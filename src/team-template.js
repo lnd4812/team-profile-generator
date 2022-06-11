@@ -1,8 +1,10 @@
+const profile = require('../../Profile');
+
 
 function generateTeamTemplate() {
 
-    const { manager, engineer, intern } = teamData;
-    // where teamData is meant to be an array of subarrays for each employee    
+    const { manager, engineer, intern } = team;
+    // where team is meant to be an array of subarrays for each employee    
 return `    
     <!DOCTYPE html
     <html lang="en">
@@ -20,10 +22,10 @@ return `
         </header>       
   
         <main class="team-board">        
-            for (var i = 0; i < ${teamData.length}; i++) {             
+            for (var i = 0; i < ${team.length}; i++) {             
             for (var j=0; j < ${teamData[i].length}; j++) {                
-                if (${teamData[i[j]]}.includes('manager)) {                   
-                    ${teamData}
+                if (${team[i[j]]}.includes('manager)) {                   
+                    ${team}
                         .filter((${ employee}) => employee)
                         .map((${ name, role, id, email, officeNumber}))
                         <div class="card manager">                        
@@ -37,8 +39,8 @@ return `
                                 <div class='last office-number'>${officeNumber}</div>                        
                             </div>                   
                         </div>               
-                } else if (${teamData[i[j]]}.includes('engineer')) {
-                    ${teamData}
+                } else if (${Data[i[j]]}.includes('engineer')) {
+                    ${Data}
                         .filter((${ employee}) => employee)
                         .map((${ name, role, id, email, github}));
                         <div class='card engineer'>                       
@@ -52,8 +54,8 @@ return `
                                 <div class='last github'>${github}</div>                     
                             </div>                    
                         </div>                  
-                } else if (${teamData[i[j]]}.includes('intern')}) {   
-                    ${teamData}
+                } else if (${Data[i[j]]}.includes('intern')}) {   
+                    ${Data}
                         .filter((${ employee}) => employee)
                         .map((${ name, role, id, email, officeNumber}));
                         <div class='intern-card'>                        
@@ -75,4 +77,4 @@ return `
     `;
 }
 
-module.exports = generateTeamTemplate(teamData);    
+module.exports = generateTeamTemplate(team);    
