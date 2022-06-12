@@ -1,36 +1,18 @@
 function generateTeamTemplate(team) {
     console.table(team);
-    
-//     const managerArray = team[0];
-//     console.log(managerArray);
-    // create Manager object; manager will be at index 0 in team array
-        
-    // extract remaining employee objects from team array; start at index 1
-    for (var i = 0; i < team.length; i++) {
-           if (team[i[1]] === "Manager") {
-           const managerArray = team[i];
-           console.log(managerArray);
-        } else if (team[i[1]] === "Engineer") {
-           const engineerArray = team[i];
-           console.log(engineerArray);
-        } else if (team[i[1]] === "Intern") {
-           const internArray = team[i];
-           console.log(internArray);   
-        };
-    
-   };
-    
 
+    team.forEach(teamMember => {
+        // console.log(teamMember);
 
-    //     const { manager, engineer, intern } = team;
-//     // where team is meant to be an array of subarrays for each employee    
-//     console.log(manager,engineer,intern)
-    
-
-  // make a function that after checking which type of employee you have sends the data into the employeeCard function
-    
-
-
+        if (teamMember.includes("manager")) {
+                buildManagerCard();
+        } else if (teamMember.includes("engineer")) {
+                buildEngineerCard();
+        } else if (teamMember.includes("intern")) {
+                buildInternCard();
+        }
+    });
+//   // make a function that after checking which type of employee you have sends the data into the employeeCard function
 return `    
     <!DOCTYPE html
     <html lang="en">
@@ -48,58 +30,30 @@ return `
         </header>       
   
         <main class="team-board">        
-                         
-                if (${team[i]}.includes('manager)) {                   
-                    ${team}
-                        .filter((${ managerArray}) => employee)
-                        .map((${ role, name, id, email, officeNumber}))
-                        <div class="card manager">                        
-                            <div class='card-header manager'>                            
-                                <h2 class="ee-name">${name}</h2><br>                            
-                                <h4 class="ee-role">${role}</h4>                        
-                            </div>
-                            <div class="card-body manager">                           
-                                <div class='id'>${id}</div>                            
-                                <div class='email'>${email}</div>                            
-                                <div class='last office-number'>${officeNumber}</div>                        
-                            </div>                   
-                        </div>               
-                } else if (${team[i]}.includes('engineer')) {
-                    ${team}
-                        .filter((${ engineerArray}) => employee)
-                        .map((${ role, name, id, email, github}));
-                        <div class='card engineer'>                       
-                            <div class='card-header engineer'>    
-                                <h2 class="ee-name">${name}</h2><br>                            
-                                <h4 class="ee-role">${role}</h4>                        
-                            </div>
-                            <div class='card-body engineer'>                           
-                                <div class='id'>${id}</div>                            
-                                <div class='email'>${email}</div>                            
-                                <div class='last github'>${github}</div>                     
-                            </div>                    
-                        </div>                  
-                } else if (${team[i]}.includes('intern')}) {   
-                    ${team}
-                        .filter((${ internArray }) => employee)
-                        .map((${ role, name, id, email, officeNumber}));
-                        <div class='intern-card'>                        
-                            <div class='card-header intern'>                           
-                                <h2 class="ee-name">${name}</h2><br>                           
-                                <h4 class="ee-role">${role}</h4>
-                            </div>                       
-                            <div class='card-body intern'>                            
-                                <div class='id'>${id}</div>                            
-                                <div class='email'>${email}</div>                            
-                                <div class='last school'>${school}</div>                        
-                            </div>                    
-                        </div>                
-                    }   
-            </main>
+      
+        
+       
+        </main>
         </body>
         <script src="../src/script.js"></script>
     </html>
-    `;
-}
+   `;                
+                
+};
+  {
+        return`
+        <div class="card manager">                        
+            <div class='card-header manager'>                            
+                <h2 class="ee-name">${name}</h2><br>                            
+                <h4 class="ee-role">${role}</h4>                        
+            </div>
+            <div class="card-body manager">                           
+                <div class='id'>${id}</div>                            
+                <div class='email'>${email}</div>                            
+                <div class='last office-number'>${officeNumber}</div>                        
+            </div>                   
+        </div> }
+`;
+ }
 
-// module.exports = generateTeamTemplate;    
+module.exports = generateTeamTemplate;    
