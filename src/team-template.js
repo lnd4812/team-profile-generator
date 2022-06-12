@@ -1,19 +1,88 @@
 function generateTeamTemplate(team) {
     console.table(team);
+}   
+    
+// create employee id cards
+    const buildManagerCard = managerArr => {
+    return `    
+        <div class="card manager">                        
+            <div class='card-header manager'> 
+            ${managerArr
+                .filter(({manager}) => manager)
+                .map(({ role, name, id, email, officeNumber}) => {
+                return`                              
+                <h2 class="ee-name">${name}</h2><br>                            
+                <h4 class="ee-role">${role}</h4>                        
+            </div>
+            <div class="card-body manager">                           
+                <div class='id'>${id}</div>                            
+                <div class='email'>${email}</div>                            
+                <div class='office-number'>${officeNumber}</div>                        
+            </div> 
+                `;
+            })
+        }    
+        </div>
+    })                      
+    `;
+};
 
-    team.forEach(teamMember => {
-        // console.log(teamMember);
+const buildEngineerCard = EngineerArr => {
+    return `    
+        <div class="card engineer">                        
+            <div class='card-header engineer'> 
+            ${EngineerArr
+                .filter(({engineer}) => engineer)
+                .map(({ role, name, id, email, github}) => {
+                return`                              
+                <h2 class="ee-name">${name}</h2><br>                            
+                <h4 class="ee-role">${role}</h4>                        
+            </div>
+            <div class="card-body manager">                           
+                <div class='id'>${id}</div>                            
+                <div class='email'>${email}</div>                            
+                <div class='github'>${github}</div>                        
+                </div> 
+                `;
+            })
+        }    
+        </div>
+    })                      
+    `;
+};
+const buildInternCard = internArr => {
+    return `    
+        <div class="card intern">                        
+            <div class='card-header intern'> 
+            ${internArr
+                .filter(({intern}) => intern)
+                .map(({ role, name, id, email, school}) => {
+                return`                              
+                <h2 class="ee-name">${name}</h2><br>                            
+                <h4 class="ee-role">${role}</h4>                        
+            </div>
+            <div class="card-body manager">                           
+                <div class='id'>${id}</div>                            
+                <div class='email'>${email}</div>                            
+                <div class='school'>${school}</div>                        
+                </div> 
+                `;
+            })
+        }    
+        </div>
+    })                      
+    `;
+};
+ 
 
-        if (teamMember.includes("manager")) {
-                buildManagerCard();
-        } else if (teamMember.includes("engineer")) {
-                buildEngineerCard();
-        } else if (teamMember.includes("intern")) {
-                buildInternCard();
-        }
-    });
-//   // make a function that after checking which type of employee you have sends the data into the employeeCard function
-return `    
+// module.exports = generateTeamTemplate;    
+
+module.exports = generateTeamTemplate(teamTemplate => {
+    const {manager, engineer, intern } = teamTemplate;
+
+    return `
+    
+    // console.log(teamTemplate);
     <!DOCTYPE html
     <html lang="en">
     <head>
@@ -30,30 +99,12 @@ return `
         </header>       
   
         <main class="team-board">        
-      
-        
-       
+            ${buildManagerCard(manager)}
+            ${buildEngineerCard(engineer)}
+            ${buildInternCard(intern)}
         </main>
-        </body>
-        <script src="../src/script.js"></script>
+    </body>
+    <script src="../src/script.js"></script>
     </html>
-   `;                
-                
-};
-  {
-        return`
-        <div class="card manager">                        
-            <div class='card-header manager'>                            
-                <h2 class="ee-name">${name}</h2><br>                            
-                <h4 class="ee-role">${role}</h4>                        
-            </div>
-            <div class="card-body manager">                           
-                <div class='id'>${id}</div>                            
-                <div class='email'>${email}</div>                            
-                <div class='last office-number'>${officeNumber}</div>                        
-            </div>                   
-        </div> }
-`;
- }
-
-module.exports = generateTeamTemplate;    
+   `;
+});
