@@ -1,17 +1,43 @@
 function generateTeamTemplate(teams)   {  
     console.table(teams); 
+      
     
-    let team = []
     for (let i = 0; i < teams.length; i++) {
-        console.log(this.teams[i]);
-        for (let j =0; j < teams[i].length; j++) {
-        console.log(this.teams[i][j]);
-        this.team = teams[i][j];
-       }
-    }
-    return team;
-}
+        this.team[i] = []; 
+        for (let j = 0; j < this.teams[i].length; j++) {
+        this.role = teams[i].role;
+        if (this.role = 'manager') {
+            this.team.push(this.role);
+            this.name = teams[i].name;
+            this.team.push(this.name);
+            this.id = teams[i].id;
+            this.team.push(this.id);
+            this.email = teams[i].email;
+            this.team.push(this.email);
+            console.log(this.team);}
+            //     for (let j =0; j < teams[i].length; j++) {
+    //     console.log(this.teams[i][j]);
+    //     this.team = teams[i][j];
+    //    }
+    };
    
+}
+getRole() {
+    return this.role = 'Employee';
+
+}getName() {
+    return this.name;
+}
+
+getId() {
+    return this.id;
+}
+
+getEmail() {
+    return this.email;
+}
+
+}; 
     
     // // create employee id cards
     // const buildManagerCard = teamMember => {
