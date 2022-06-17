@@ -1,41 +1,63 @@
 function generateTeamTemplate(teams)   {  
     console.table(teams); 
-      
     
     for (let i = 0; i < teams.length; i++) {
-        this.team[i] = []; 
-        for (let j = 0; j < this.teams[i].length; j++) {
-        this.role = teams[i].role;
-        if (this.role = 'manager') {
-            this.team.push(this.role);
-            this.name = teams[i].name;
-            this.team.push(this.name);
-            this.id = teams[i].id;
-            this.team.push(this.id);
-            this.email = teams[i].email;
-            this.team.push(this.email);
-            console.log(this.team);}
+        // for (let j = 1; j < teams[i].length; j++) {
+          
+            const team = [];
+                role = teams[i].role;
+                team.push(role);
+                team = new Team(role);
+                if (team.getRole() === 'manager' || 'Manager') {
+                    name = teams[i].name;
+                    id = teams[i].id;
+                    email = teams[i].email;
+                    officeNumber = teams[i].officeNumber;
+                    team.push(name, id, email, officeNumber);
+                    console.log(team);
+                } else if (team.role === 'engineer' || 'Engineer') {
+                    name = teams[i].name;
+                    id = teams[i].id;
+                    email = teams[i].emailgithub = teams[i].github;
+                    team.push(name, id, email, github);
+                    console.log(team); 
+                } else if (team.role === 'intern' || 'Intern' ) {
+                    name = teams[i].name;
+                    id = teams[i].id;
+                    email = teams[i].emailschool = teams[i].school;
+                    team.push(role, name, id, email, school);
+                    console.log(team); 
+    }  //     // if (this.role = 'manager') {
+        //     this.team.push(this.role);
+        //     this.name = teams[i].name;
+        //     this.team.push(this.name);
+        //     this.id = teams[i].id;
+        //     this.team.push(this.id);
+        //     this.email = teams[i].email;
+        //     this.team.push(this.email);
+        //     console.log(this.team);}
             //     for (let j =0; j < teams[i].length; j++) {
     //     console.log(this.teams[i][j]);
     //     this.team = teams[i][j];
     //    }
-    };
    
-}
-getRole() {
-    return this.role = 'Employee';
+    // };
+   
+// }
+// getRole() {
+//     return this.role = 'Employee';
 
-}getName() {
-    return this.name;
-}
+// }getName() {
+//     return this.name;
+// }
 
-getId() {
-    return this.id;
-}
+// getId() {
+//     return this.id;
+// }
 
-getEmail() {
-    return this.email;
-}
+// getEmail() {
+//     return this.email;
+// }
 
 }; 
     
@@ -141,8 +163,8 @@ getEmail() {
     //         <script src="../src/script.js"></script>
     //         </html>
     //        `;
-       
-    //     }
+};  
+
 module.exports = generateTeamTemplate;
 
    
