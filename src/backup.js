@@ -87,12 +87,12 @@
 //              <h2 class="ee-name">${team[i].name}</h2><br>                            
 //                <h4 class="ee-role">${team[i].role}</h4>                        
 //            </div>
-// //           <div class="card-body intern">                           
-// //               <div class='id'>${team[i].id}</div>                            
-// //               <div class='email'>${team[i].email}</div>                            
-// //               <div class='school'>${team[i].school}</div>                        
-// //           </div>        
-// //       </div>                                `;
+//           <div class="card-body intern">                           
+//               <div class='id'>${team[i].id}</div>                            
+//               <div class='email'>${team[i].email}</div>                            
+//               <div class='school'>${team[i].school}</div>                        
+//           </div>        
+//       </div>                                `;
 // `;
 // `
 // module.exports = generateTeamTemplate;

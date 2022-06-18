@@ -1,171 +1,124 @@
-function generateTeamTemplate(teams)   {  
-    console.table(teams); 
+const Employee = require("../lib/Employee");
+const Manager = require("../lib/Manager");
+const Engineer = require("../lib/Engineer");
+const Intern = require("../lib/Intern");
+
+class teamBuilder {
+    constructor() {
+        this.employees = [];
+        this.manager = []; 
+        this.engineer = [];
+        this.intern = [];
+    }      
+
+    initializeEmployee() {
+        this.employees.push(new Employee('role','name','id', 'email', 'officeNumber'));
+        this.employees.push(new Employee('role','name','id', 'email', 'github'));
+        this.employees.push(new Employee('role','name','id', 'email', 'school'));
+    }
     
-    for (let i = 0; i < teams.length; i++) {
-        // for (let j = 1; j < teams[i].length; j++) {
-          
-            const team = [];
-                role = teams[i].role;
-                team.push(role);
-                team = new Team(role);
-                if (team.getRole() === 'manager' || 'Manager') {
-                    name = teams[i].name;
-                    id = teams[i].id;
-                    email = teams[i].email;
-                    officeNumber = teams[i].officeNumber;
-                    team.push(name, id, email, officeNumber);
-                    console.log(team);
-                } else if (team.role === 'engineer' || 'Engineer') {
-                    name = teams[i].name;
-                    id = teams[i].id;
-                    email = teams[i].emailgithub = teams[i].github;
-                    team.push(name, id, email, github);
-                    console.log(team); 
-                } else if (team.role === 'intern' || 'Intern' ) {
-                    name = teams[i].name;
-                    id = teams[i].id;
-                    email = teams[i].emailschool = teams[i].school;
-                    team.push(role, name, id, email, school);
-                    console.log(team); 
-    }  //     // if (this.role = 'manager') {
-        //     this.team.push(this.role);
-        //     this.name = teams[i].name;
-        //     this.team.push(this.name);
-        //     this.id = teams[i].id;
-        //     this.team.push(this.id);
-        //     this.email = teams[i].email;
-        //     this.team.push(this.email);
-        //     console.log(this.team);}
-            //     for (let j =0; j < teams[i].length; j++) {
-    //     console.log(this.teams[i][j]);
-    //     this.team = teams[i][j];
-    //    }
-   
-    // };
-   
-// }
-// getRole() {
-//     return this.role = 'Employee';
+    // Manager is first employee added to array, so create manager teamgit 
+    managerCard() {
+        manager = new Manager;
+        Manager.push(role, name, id, email, officeNumber);
+        console.log(Manager);
+    }
 
-// }getName() {
-//     return this.name;
-// }
-
-// getId() {
-//     return this.id;
-// }
-
-// getEmail() {
-//     return this.email;
-// }
-
-}; 
+    engineerCard() {
+        this.engineer = new Engineer;
+        Engineer.push(role, name, id, email, officeNumber);
+        console.log(Engineer);
+    }
     
-    // // create employee id cards
-    // const buildManagerCard = teamMember => {
+    internCard() {
         
-    // return `    
-    //     <div class="card manager">                        
-    //         <div class='card-header manager'> 
-    //         ${teamMember
-    //             .filter(({role}) => role)
-    //             .map(({ role, name, id, email, officeNumber}) => {
-    //             return`                              
-    //             <h2 class="ee-name">${name}</h2><br>                            
-    //             <h4 class="ee-role">${role}</h4>                        
-    //         </div>
-    //         <div class="card-body manager">                           
-    //             <div class='id'>${id}</div>                            
-    //             <div class='email'>${email}</div>                            
-    //             <div class='office-number'>${officeNumber}</div>                        
-    //         </div> 
-    //             `;
-    //         })
-    //     }    
-    //     </div>
-    //     })                      
-    //     `;
-    // };
+        this.intern = new Intern;
+        Intern.push(role, name, id, email, school);
+        console.log(Intern);
+      
+    }
 
-    // const buildEngineerCard = teamMember => {
+    renderTeamPage(teamData) {
+       return `
+        <!DOCTYPE html
+        <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name = "viewport" content="width=device-width, initial-scale-1.0">        
+                <meta http-equiv="X-UA Compatible" content="ie=edge">        
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">        
+                <link rel="stylesheet" href="../src/style.css">       
+                <title>Team-Profile-Generator</title>  
+            </head>    
+            <body>       
+                <header>          
+                    <h1 class="title">My Team</h1>       
+                </header>
+                <main class="container my-5 team-board"> 
+        `;              
+    } 
+
+    ManagerCard = manager => {    
+        return`
+            <div class="card manager">                        
+                <div class='card-header manager'> 
+                    <h2 class="ee-name">${team[i].name}</h2><br>                            
+                    <h4 class="ee-role">${team[i].role}</h4>                        
+                </div>
+                <div class="card-body manager">                           
+                    <div class='id'>${team[i].id}</div>                            
+                    <div class='email'>${team[i].email}</div>                            
+                    <div class='office-number'>${team[i].officeNumber}</div>                        
+                </div>           
+            </div>                        
+       `;
+    }
+    EngineerCard = engineer => {
+        return`
+            <div class="card engineer">                        
+                <div class='card-header engineer'>                                              
+                    <h2 class="ee-name">${team[i].name}</h2><br>                            
+                    <h4 class="ee-role">${team[i].role}</h4>                        
+                </div>
+                <div class="card-body engineer">                           
+                    <div class='id'>${team[i].id}</div>                            
+                    <div class='email'>${team[i].email}</div>                            
+                    <div class='github'>${team[i].github}</div>                        
+                </div>           
+            </div>                       
+        `;
+        };
+
+    InternCard = intern => {
+        return `
+            <div class="card intern">                        
+            <div class='card-header intern'>                                           
+                ${team[i]} = 
+                }  
+                <h2 class="ee-name">${team[i].name}</h2><br>                            
+                <h4 class="ee-role">${team[i].role}</h4>                        
+            </div>
+            <div class="card-body intern">                           
+                <div class='id'>${team[i].id}</div>                            
+                <div class='email'>${team[i].email}</div>                            
+                <div class='school'>${team[i].school}</div>                        
+            </div>        
+            </div>                                `;
+`;
+
+
+                
+                   
+                </main>
         
-    //     return `    
-    //         <div class="card engineer">                        
-    //             <div class='card-header engineer'> 
-    //             ${teamMember
-    //                 .filter(({role}) => role)
-    //                 .map(({ role, name, id, email, github}) => {
-    //                 return`                              
-    //                 <h2 class="ee-name">${name}</h2><br>                            
-    //                 <h4 class="ee-role">${role}</h4>                        
-    //             </div>
-    //             <div class="card-body engineer">                           
-    //                 <div class='id'>${id}</div>                            
-    //                 <div class='email'>${email}</div>                            
-    //                 <div class='github'>${github}</div>                        
-    //             </div> 
-    //                 `;
-    //             })
-    //         }    
-    //         </div>
-    //         })                      
-    //         `;
-    //     };
+            </body>
+        </html>
 
-    //     const buildInternCard = teamMember => {
-        
-    //         return `    
-    //             <div class="card intern">                        
-    //                 <div class='card-header intern'> 
-    //                 ${teamMember
-    //                     .filter(({role}) => role)
-    //                     .map(({ role, name, id, email, school}) => {
-    //                     return`                              
-    //                     <h2 class="ee-name">${name}</h2><br>                            
-    //                     <h4 class="ee-role">${role}</h4>                        
-    //                 </div>
-    //                 <div class="card-body intern">                           
-    //                     <div class='id'>${id}</div>                            
-    //                     <div class='email'>${email}</div>                            
-    //                     <div class='school'>${school}</div>                        
-    //                 </div> 
-    //                     `;
-    //                 })
-    //             }    
-    //             </div>
-    //             })                      
-    //             `;
-    //         };
-    //         return `
-    
-    //         // console.log(teamTemplate);
-    //         <!DOCTYPE html
-    //         <html lang="en">
-    //         <head>
-    //             <meta charset="UTF-8">
-    //             <meta name = "viewport" content="width=device-width, initial-scale-1.0">        
-    //             <meta http-equiv="X-UA Compatible" content="ie=edge">        
-    //             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">        
-    //             <link rel="stylesheet" href="../src/style.css">       
-    //             <title>Team-Profile-Generator</title>  
-    //         </head>    
-    //         <body>       
-    //             <header>          
-    //                 <h1 class="title">My Team</h1>       
-    //             </header>       
-          
-    //             <main class="team-board">        
-    //                 ${buildManagerCard(manager)}
-    //                 ${buildEngineerCard(engineer)}
-    //                 ${buildInternCard(intern)}
-    //             </main>
-    //         </body>
-    //         <script src="../src/script.js"></script>
-    //         </html>
-    //        `;
-};  
+    }
+}
 
-module.exports = generateTeamTemplate;
+  
+module.exports = teamBuilder;
 
    
 
