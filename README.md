@@ -63,7 +63,15 @@ My GitHub repository link for this project is [github.com/lnd4812/team-profile-g
 
 ## Application Video Link
 
-The link to the application video may be accessed at to follow
+The link to the application video may be accessed at the following links:
+
+Vidline - Videos
+[Part 1 - tDD](https://www.vidline.com/share/V07EVHVOMR/3e88f10c338b25ffa795913279197d35)
+
+Vidline - Videos
+[Part 2 - Inquirer Prompt run through & team profile creation](https://www.vidline.com/share/V07EVHVOMR/3e88f10c338b25ffa795913279197d35).
+
+![screenshot of profile created during session](src/created-team-profile-screen-shot.png)
 
 ## Contact information
 
