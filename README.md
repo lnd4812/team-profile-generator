@@ -10,6 +10,12 @@ TEAM PROFILE GENERATOR
 
 Use Inquirer Prompt to ask a user to answer a series of questions using the CLI.  The series of questions is set up for the user, as manager, to enter manager specifici properties aftr which the manager is then prompted to add additional employees to the team, either engineers or interns, or to exit the process.  Once exited, responses from the inquirer process are exported to template which creates profile cards for each team member featuring the reponses provided through the inquirer interface.
 
+Output is based on the acceptance criteria outlined in the Module 10 Assignment Overview [Module-10-assignment](https://courses.bootcampspot.com/courses/1181/assignments/23366?module_item_id=463364).
+
+A sample display of expected output is included in the Challenge outline.
+
+![example](src/10-object-oriented-programming-homework-demo.png)
+
 ## Table of Contents
 
 * [Installation](#installation)
