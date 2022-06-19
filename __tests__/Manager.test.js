@@ -6,12 +6,12 @@ test('creates a manager object', () => {
     expect(manager.name).toBe('name');
     expect(manager.id).toBe('id');
     expect(manager.email).toBe('email');
-    expect(manager.officeNumber).toBe('officeNumber');
-    expect.arrayContaining([manager]); 
+    expect(manager.getOfficeNumber()).toBe('officeNumber');
       
 });
               
 test("gets manager's role", () => {
-     expect(manager.getRole()).toBe('Manager');  
+    const manager = new Manager('name', 'id', 'email', 'officeNumber'); 
+    expect(manager.getRole()).toBe('Manager');  
          
 });  
