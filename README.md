@@ -47,7 +47,7 @@ None at this time.
 
 ## Credits
 
-Some assistance was provided in my weekly tutoring session, along with additional assistance from the TA's during office hours and a number of visits to the Stack Overflow website [https://stackoverflow.com](https://stackoverflow.com).
+Significant assistance was provided in my weekly tutoring session, along with additional assistance from the TA's during office hours and a number of visits to the Stack Overflow website [https://stackoverflow.com](https://stackoverflow.com).
 
 ## Questions?
 
@@ -55,7 +55,7 @@ If you have any questions, please see my contact details below:
 
 ## GitHub Username
 
-My GitHub Username is [github.com/lnd4812](github.com/lnd4812)
+My GitHub Username is [github.com/lnd4812](https://github.com/lnd4812)
 
 ## GitHub Repository
 
