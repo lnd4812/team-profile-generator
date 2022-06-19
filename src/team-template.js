@@ -1,4 +1,4 @@
-class TeamBuilder {
+class teamBuilder {
   constructor() {}
 
   // Manager is first employee added to array, so create manager team card
@@ -7,12 +7,12 @@ class TeamBuilder {
     <div class="card manager">  
         <div class='card-header manager'> 
             <h2 class="ee-name">${managerData.name}</h2>                            
-            <h3 class="ee-role">Manager</h3>                        
+            <h3 class="ee-role">Manager</h3>                       
         </div>
         <div class="card-body manager">                           
-            <div class='id'><h4>ID:</h4> ${managerData.id}</div>                           
-            <div class='email'><h4>Email:</h4> ${managerData.email}</div>                            
-            <div class='office-number'><h4>Office number:</h4>${managerData.officeNumber}</div>                        
+            <div class='id'><h5>ID: </h5>${managerData.id}</div>                          
+            <div class='email'><h5>Email: </h5>${managerData.email}</div>                            
+            <div class='office-number'><h5>Office number: </h5>${managerData.officeNumber}</div>                      
         </div>
     </div>
     `;
@@ -28,9 +28,9 @@ class TeamBuilder {
                 <h3 class="ee-role">Engineer</h3>                        
             </div>
             <div class="card-body engineer">                           
-                <div class='id'><h4>ID:</h4> ${id}</div>                            
-                <div class='email'><h4>Email:</h4> ${email}</div>                            
-                <div class='github'><h4>GitHub:</h4>${github}</div>                        
+                <div class='id'><h5>ID: </h5> ${id}</div>                            
+                <div class='email'><h5>Email: </h5>${email}</div>                            
+                <div class='github'><h5>GitHub: </h5>${github}</div>                        
             </div>
         </div> 
     `;
@@ -45,9 +45,9 @@ class TeamBuilder {
                 <h3 class="ee-role">Intern</h3>                        
             </div>
             <div class="card-body intern">                           
-                <div class='id'><h4>ID:</h4> ${id}</div>                            
-                <div class='email'><h4>Email:</h4> ${email}</div>                            
-                <div class='school'><h4>School:</h4>${school}</div>                        
+                <div class='id'><h5>ID: </h5>${id}</div>                            
+                <div class='email'><h5>Email: </h5>${email}</div>                            
+                <div class='school'><h5>School: </h5>${school}</div>                        
             </div>
         </div> 
     `;
@@ -55,7 +55,6 @@ class TeamBuilder {
   
   // extract the team member arrays from the data passed in Profile inquirer
   renderTeamPage(teamData) {
-    // console.log(teamData);
     const [manager] = teamData.filter((member) => member.getRole() === "Manager");
     const engineers = teamData.filter((member) => member.getRole() === "Engineer" );
     const interns = teamData.filter((member) => member.getRole() === "Intern");
@@ -87,4 +86,4 @@ class TeamBuilder {
     }
   }
 
-module.exports = TeamBuilder;
+module.exports = teamBuilder;

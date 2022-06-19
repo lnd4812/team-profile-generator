@@ -283,7 +283,7 @@ class teamBuilder {
     //     };    
     //     `;
     // };
-
+// ${interns.map(this.buildInternCard).join("")}
     renderTeamPage(teamData) {
         console.log(teamData);
         // const { managerArray, engineerArray, internArray } = teamData;
