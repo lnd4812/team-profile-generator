@@ -332,3 +332,74 @@ module.exports = teamBuilder;
                             <div class='school'>School: ${teamData[2].school}</div>      
                         </div>  
                     </div> */}
+
+
+                    buildManagerCard(manager) {
+                        return`
+                            <div class="card manager">                        
+                                <div class='card-header manager'> 
+                                ${manager
+                                    .filter(({ employees }) => employees)
+                                    .map(({ name, id, email, officeNumber}) => {
+                                        return`<h2 class="ee-name">${name}</h2><br>                            
+                                    <h4 class="ee-role">Manager</h4>                        
+                                </div>
+                                <div class="card-body manager">                           
+                                    <div class='id'><span><h4>ID: </h4>${id}</span></div>                            
+                                    <div class='email'><span><h4>Email: </h4>${email}</span></div>                            
+                                    <div class='office-number'><span><h4>Office number:</h4> ${officeNumber}</span></div>                        
+                                </div>
+                                        `;
+                                    })
+                                })          
+                            </div>
+                        };
+                     `;          
+                    }
+                    
+                    buildEngineerCard(engineer) {
+                        return`
+                            <div class="card engineer">                        
+                                <div class='card-header engineer'>
+                                ${engineer
+                                    .filter(({ employees }) => employees)
+                                    .map(({ name, id, email, github}) => {                                              
+                                    return `<h2 class="ee-name">${name}</h2><br>                            
+                                    <h4 class="ee-role">Engineer</h4>                        
+                                </div>
+                                <div class="card-body engineer">                           
+                                    <div class='id'><span><h4>ID: </h4>${id}</span></div>                            
+                                    <div class='email'><span><h4>Email: </h4>${email}</span></div>                            
+                                    <div class='github'><span><h4>GitHub: </h4>${github}</span></div>                        
+                                </div>
+                                        `;
+                                    })
+                                })          
+                            </div>
+                            };    
+                        `;
+                    };
+                    
+                    (intern) {
+                       return ` 
+                        <div class="card intern">                        
+                            <div class='card-header intern'>                                           
+                            ${intern
+                                .filter(({ employees }) => employees)
+                                .map(({ name, id, email, school}) => {                                              
+                                return `<h2 class="ee-name">${name}</h2><br>                            
+                                <h4 class="ee-role">Engineer</h4>                                          
+                                <h4 class="ee-role">Intern</h4>                        
+                            </div>
+                            <div class="card-body intern">                           
+                                <div class='id'><span><h4>ID: </h4>${id}<span></div>                            
+                                <div class='email'><span><h4>Email: </h4>${email}</span></div>                            
+                                <div class='school'><span><h4>School: </h4>${school}</span></div>                        
+                            </div>
+                                    `;
+                                })
+                            })
+                        </div>  
+                        };    
+                        `;
+                    };
