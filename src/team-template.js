@@ -6,39 +6,89 @@ const Intern = require("../lib/Intern");
 class teamBuilder {
     constructor() {
         this.employees = [];
-        this.manager = []; 
-        this.engineer = [];
-        this.intern = [];
+        
     }      
 
     initializeEmployee() {
-        this.employees.push(new Employee('role','name','id', 'email', 'officeNumber'));
-        this.employees.push(new Employee('role','name','id', 'email', 'github'));
-        this.employees.push(new Employee('role','name','id', 'email', 'school'));
-    }
+        this.employees.push(new Employee('name','id', 'email', 'officeNumber'));
+        this.employees.push(new Employee('name','id', 'email', 'github'));
+        this.employees.push(new Employee('name','id', 'email', 'school'));
+    }    
     
-    // Manager is first employee added to array, so create manager teamgit 
-    managerCard() {
-        manager = new Manager;
-        Manager.push(role, name, id, email, officeNumber);
-        console.log(Manager);
-    }
+     // Manager is first employee added to array, so create manager team card 
+    buildManagerCard(engineer) {
+        return`
+            <div class="card manager">                        
+                <div class='card-header manager'> 
+                ${manager
+                    .filter(({ employees }) => employees)
+                    .map(({ name, id, email, officeNumber}) => {
+                        return`<h2 class="ee-name">${name}</h2><br>                            
+                    <h4 class="ee-role">Manager</h4>                        
+                </div>
+                <div class="card-body manager">                           
+                    <div class='id'>${id}</div>                            
+                    <div class='email'>${email}</div>                            
+                    <div class='office-number'>${officeNumber}</div>                        
+                </div>
+                        `;
+                    })
+                })          
+            </div>
+        };
+     `;                        
+    };
 
-    engineerCard() {
-        this.engineer = new Engineer;
-        Engineer.push(role, name, id, email, officeNumber);
-        console.log(Engineer);
-    }
+    buildEngineerCard(engineer) {
+        return`
+            <div class="card engineer">                        
+                <div class='card-header engineer'>
+                ${engineer
+                    .filter(({ employees }) => employees)
+                    .map(({ name, id, email, github}) => {                                              
+                    return `<h2 class="ee-name">${name}</h2><br>                            
+                    <h4 class="ee-role">Engineer</h4>                        
+                </div>
+                <div class="card-body engineer">                           
+                    <div class='id'>${id}</div>                            
+                    <div class='email'>${email}</div>                            
+                    <div class='github'>${github}</div>                        
+                </div>
+                        `;
+                    })
+                })          
+            </div>
+            };    
+        `;
+    };
     
-    internCard() {
-        
-        this.intern = new Intern;
-        Intern.push(role, name, id, email, school);
-        console.log(Intern);
-      
-    }
+    buildInternCard(intern) {
+       return ` 
+        <div class="card intern">                        
+            <div class='card-header intern'>                                           
+            ${intern
+                .filter(({ employees }) => employees)
+                .map(({ name, id, email, school}) => {                                              
+                return `<h2 class="ee-name">${name}</h2><br>                            
+                <h4 class="ee-role">Engineer</h4>                                          
+                <h4 class="ee-role">Intern</h4>                        
+            </div>
+            <div class="card-body intern">                           
+                <div class='id'>${id}</div>                            
+                <div class='email'>${email}</div>                            
+                <div class='school'>${school}</div>                        
+            </div>
+                    `;
+                })
+            })
+        </div>  
+        };    
+        `;
+    };
 
     renderTeamPage(teamData) {
+        // console.log(teamData);
+        // const { manager, engineer, intern } = teamData;
        return `
         <!DOCTYPE html
         <html lang="en">
@@ -54,72 +104,34 @@ class teamBuilder {
                 <header>          
                     <h1 class="title">My Team</h1>       
                 </header>
-                <main class="container my-5 team-board"> 
-        `;              
-    } 
-
-    ManagerCard = manager => {    
-        return`
-            <div class="card manager">                        
-                <div class='card-header manager'> 
-                    <h2 class="ee-name">${team[i].name}</h2><br>                            
-                    <h4 class="ee-role">${team[i].role}</h4>                        
-                </div>
-                <div class="card-body manager">                           
-                    <div class='id'>${team[i].id}</div>                            
-                    <div class='email'>${team[i].email}</div>                            
-                    <div class='office-number'>${team[i].officeNumber}</div>                        
-                </div>           
-            </div>                        
-       `;
-    }
-    EngineerCard = engineer => {
-        return`
-            <div class="card engineer">                        
-                <div class='card-header engineer'>                                              
-                    <h2 class="ee-name">${team[i].name}</h2><br>                            
-                    <h4 class="ee-role">${team[i].role}</h4>                        
-                </div>
-                <div class="card-body engineer">                           
-                    <div class='id'>${team[i].id}</div>                            
-                    <div class='email'>${team[i].email}</div>                            
-                    <div class='github'>${team[i].github}</div>                        
-                </div>           
-            </div>                       
-        `;
-        };
-
-    InternCard = intern => {
-        return `
-            <div class="card intern">                        
-            <div class='card-header intern'>                                           
-                ${team[i]} = 
-                }  
-                <h2 class="ee-name">${team[i].name}</h2><br>                            
-                <h4 class="ee-role">${team[i].role}</h4>                        
-            </div>
-            <div class="card-body intern">                           
-                <div class='id'>${team[i].id}</div>                            
-                <div class='email'>${team[i].email}</div>                            
-                <div class='school'>${team[i].school}</div>                        
-            </div>        
-            </div>                                `;
-`;
-
-
-                
-                   
+                <main class="team-board"> 
+                    <div class="card manager">  
+                        <div class='card-header manager'> 
+                            <h2 class="ee-name">${teamData[0].name}</h2>                            
+                            <h3 class="ee-role">Manager</h3>                        
+                        </div>
+                        <div class="card-body manager">                           
+                            <div class='id'>ID: ${teamData[0].id}</div>                            
+                            <div class='email'>Email: ${teamData[0].email}</div>                            
+                            <div class='office-number'>Office number: ${teamData[0].officeNumber}</div>                        
+                        </div>
+                    </div>
+                    <div class="card engineer">     
+                        <div class='card-header engineer'>
+                            <h2 class="ee-name">${teamData[1].name}</h2>                            
+                            <h3 class="ee-role">Engineer</h3>                        
+                        </div>
+                        <div class="card-body engineer">                           
+                            <div class='id'>ID: ${teamData[1].id}</div>                            
+                            <div class='email'>Email: ${teamData[1].email}</div>                            
+                            <div class='github'>GitHub: ${teamData[1].github}</div>                        
+                        </div> 
+                    </div>    
                 </main>
-        
             </body>
-        </html>
+        </html>        
+    `;               
+    } 
+} 
 
-    }
-}
-
-  
 module.exports = teamBuilder;
-
-   
-
-   
