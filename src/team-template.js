@@ -11,7 +11,7 @@ class teamBuilder {
         </div>
         <div class="card-body manager">                           
             <div class='id'><h5>ID: </h5>${managerData.id}</div>                          
-            <div class='email'><h5>Email: </h5>${managerData.email}</div>                            
+            <div class='email'><h5>Email: </h5><a href="${managerData.email}">${managerData.email}</a></div>                            
             <div class='office-number'><h5>Office number: </h5>${managerData.officeNumber}</div>                      
         </div>
     </div>
@@ -29,8 +29,8 @@ class teamBuilder {
             </div>
             <div class="card-body engineer">                           
                 <div class='id'><h5>ID: </h5> ${id}</div>                            
-                <div class='email'><h5>Email: </h5>${email}</div>                            
-                <div class='github'><h5>GitHub: </h5>${github}</div>                        
+                <div class='email'><h5>Email: </h5><a href="mailto:${email}">${email}</a></div>                            
+                <div class='github'><h5>GitHub: </h5><a href="https://github.com/${github}">${github}</a></div>                        
             </div>
         </div> 
     `;
@@ -46,7 +46,7 @@ class teamBuilder {
             </div>
             <div class="card-body intern">                           
                 <div class='id'><h5>ID: </h5>${id}</div>                            
-                <div class='email'><h5>Email: </h5>${email}</div>                            
+                <div class='email'><h5>Email: </h5><a href="mailto:${email}">${email}</a></div>                            
                 <div class='school'><h5>School: </h5>${school}</div>                        
             </div>
         </div> 
