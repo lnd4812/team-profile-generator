@@ -11,7 +11,7 @@ class teamBuilder {
         </div>
         <div class="card-body manager">                           
             <div class='id'><h5>ID: </h5>${managerData.id}</div>                          
-            <div class='email'><h5>Email: </h5><a href="${managerData.email}">${managerData.email}</a></div>                            
+            <div class='email'><h5>Email: </h5><a href="mailto:${managerData.email}">${managerData.email}</a></div>                            
             <div class='office-number'><h5>Office number: </h5>${managerData.officeNumber}</div>                      
         </div>
     </div>

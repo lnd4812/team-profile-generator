@@ -1,0 +1,94 @@
+:root {
+  --primary: #ffffff;
+  --secondary: rgba(189, 2, 2, 0.818);
+  --tertiary: rgba(9, 60, 168, 0.897);
+  --light: rgb(208, 235, 246);
+  --dark: #000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--primary);
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+main {
+  margin: 20px auto;
+  width: 94%;
+}
+
+header {
+  padding: 2.5px;
+  margin: 20px;
+  background-color: var(--secondary);
+}
+
+header h1 {
+  font-size: 3rem;
+  color: var(--primary);
+  text-align: center;
+}
+
+.team-board {
+  width: 90%;
+  background: var(--primary);
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+   }
+
+/* CARDS */
+.card {
+  margin: 20px;
+  width: 25%;
+  border: none;
+  padding-left: 25px;
+    
+  }
+
+.card-header {
+  color: var(--primary);
+  background-color: var(--tertiary);
+  padding-left: 25px;
+  text-align: left;
+  height: 100px;
+}
+
+.card-body {
+  padding: 5px;
+  height: 200px;
+  background-color: var(--light);
+  color: var(--dark);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+} 
+
+.id, .email, .office-number, .github, .school {
+  width: 95%;
+  height: 50px;
+  margin: 0 auto;
+  background-color: var(--primary);
+  border: 1px solid var(--light);
+  color: var(--tertiary);
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-left: 5px;
+}
+
+.id h5, .email h5, .office-number h5, .github h5, .school h5 {
+  color: var(--dark);
+  width: 40%;
+}  
