@@ -67,6 +67,7 @@ The link to the application video may be accessed at the following links:
 
 Vidline - Videos
 [Part 1 -TDD](https://www.vidline.com/share/V0X9NH5N8G/e60a8af90ef07047f1d2e167b20916b5)
+
 [Part 1b - TDD.Employee](https://www.vidline.com/share/V0XJBHE2G3/7e2896c1bcd0b4fe2319a5475b5b4ced)
 
 Vidline - Videos
